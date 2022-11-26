@@ -1,0 +1,11 @@
+# Infracost Config File
+# https://www.infracost.io/docs/features/config_file
+
+version: 0.1
+
+projects:
+  - name: "google-cloud-kitchen-terraform - Sandbox: Global"
+    path: global
+    terraform_var_files:
+      - tfvars/sb.tfvars
+    usage_file: global/tfvars/infracost-usage.yml

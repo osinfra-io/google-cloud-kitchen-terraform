@@ -1,0 +1,8 @@
+name: Dependabot
+
+on: pull_request_target
+
+jobs:
+  dependabot:
+    name: Dependabot
+    uses: osinfra-io/github-misc-called-workflows/.github/workflows/dependabot.yml@main
