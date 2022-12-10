@@ -11,7 +11,7 @@ on:
 jobs:
   global_infra:
     name: "Infra: global"
-    uses: osinfra-io/github-terraform-called-workflows/.github/workflows/gcp-plan-and-apply-called.yml@main
+    uses: osinfra-io/github-terraform-gcp-called-workflows/.github/workflows/gcp-plan-and-apply.yml@main
     needs: [global_infra_main]
     with:
       checkout_ref: ${{ github.ref }}
