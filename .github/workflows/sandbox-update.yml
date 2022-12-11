@@ -16,7 +16,7 @@ jobs:
       checkout_ref: ${{ github.ref }}
       github_env: "Sandbox Infrastructure: Global"
       service_account: kitchen-github-actions@shared-terraform-tf95c8-sb.iam.gserviceaccount.com
-      terraform_version: 1.3.5
+      terraform_version: 1.3.6
       tf_plan_args: -var-file=tfvars/sb.tfvars
       tf_state_bucket: shared-terraform-tf95c8-sb-kitchen
       tf_workspace: global-infra-sb
@@ -25,4 +25,4 @@ jobs:
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       tf_plan_secret_args: >-
-        -var=bridgecrew_token=${{ secrets.BRIDGECREW_API_KEY }}
+        -var=bridgecrew_api_key=${{ secrets.BRIDGECREW_API_KEY }}
