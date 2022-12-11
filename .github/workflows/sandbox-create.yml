@@ -25,6 +25,8 @@ jobs:
       workload_identity_provider: projects/973857465223/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      tf_plan_secret_args: >-
+        -var=bridgecrew_token=${{ secrets.BRIDGECREW_API_KEY }}
 
   global_infra:
     name: "Infra: global"
@@ -42,3 +44,5 @@ jobs:
       workload_identity_provider: projects/973857465223/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      tf_plan_secret_args: >-
+        -var=bridgecrew_token=${{ secrets.BRIDGECREW_API_KEY }}

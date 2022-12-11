@@ -14,6 +14,16 @@ terraform {
   }
 }
 
+# Bridgecrew Read-Only Module
+# https://registry.terraform.io/modules/bridgecrewio/bridgecrew-gcp-read-only
+
+module "bridgecrew-read" {
+  source = "bridgecrewio/bridgecrew-gcp-read-only/google"
+
+  bridgecrew_token = var.bridgecrew_api_key
+  org_name         = "osinfra"
+}
+
 # Google Project Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-project
 
