@@ -26,6 +26,7 @@ jobs:
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       tf_plan_secret_args: >-
+        -var=billing_account=${{ secrets.BILLING_ACCOUNT }}
         -var=bridgecrew_token=${{ secrets.BRIDGECREW_API_KEY }}
 
   global_infra:
@@ -45,4 +46,5 @@ jobs:
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       tf_plan_secret_args: >-
+        -var=billing_account=${{ secrets.BILLING_ACCOUNT }}
         -var=bridgecrew_api_key=${{ secrets.BRIDGECREW_API_KEY }}
