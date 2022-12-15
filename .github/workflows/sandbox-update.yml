@@ -14,16 +14,16 @@ jobs:
     uses: osinfra-io/github-terraform-gcp-called-workflows/.github/workflows/gcp-plan-and-apply.yml@brettcurtis/issue27
     with:
       checkout_ref: ${{ github.ref }}
-      github_env: "Sandbox Infrastructure: Global"
+      github_environment: "Sandbox Infrastructure: Global"
       service_account: kitchen-github-actions@shared-terraform-tf95c8-sb.iam.gserviceaccount.com
+      terraform_plan_args: -var-file=tfvars/sb.tfvars
+      terraform_state_bucket: shared-terraform-tf95c8-sb-kitchen
       terraform_version: 1.3.6
-      tf_plan_args: -var-file=tfvars/sb.tfvars
-      tf_state_bucket: shared-terraform-tf95c8-sb-kitchen
-      tf_workspace: global-infra-sb
+      terraform_workspace: global-infra-sb
       working_dir: global/infra
       workload_identity_provider: projects/973857465223/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      tf_plan_secret_args: >-
+      terraform_plan_secret_args: >-
         -var=billing_account=${{ secrets.BILLING_ACCOUNT }}
         -var=bridgecrew_api_key=${{ secrets.BRIDGECREW_API_KEY }}
