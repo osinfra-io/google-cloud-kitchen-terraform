@@ -21,7 +21,7 @@ jobs:
       terraform_plan_args: -destroy -var-file=tfvars/sb.tfvars
       terraform_state_bucket: shared-terraform-tf95c8-sb-kitchen
       terraform_workspace: global-infra-sb
-      working_dir: global/infra
+      working_directory: global/infra
       workload_identity_provider: projects/973857465223/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
