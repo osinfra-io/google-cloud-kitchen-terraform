@@ -11,17 +11,18 @@ on:
 jobs:
   global_infra:
     name: "Infra: global"
-    uses: osinfra-io/github-terraform-called-workflows/.github/workflows/gcp-plan-and-apply-called.yml@main
-    needs: [global_infra_main]
+    uses: osinfra-io/github-terraform-gcp-called-workflows/.github/workflows/gcp-plan-and-apply.yml@main
     with:
       checkout_ref: ${{ github.ref }}
-      github_env: "Sandbox Infrastructure: Global"
-      service_account: kitchen-github-actions@shared-terraform-tf2aa7-sb.iam.gserviceaccount.com
+      github_environment: "Sandbox Infrastructure: Global"
+      service_account: kitchen-github-actions@shared-terraform-tf95c8-sb.iam.gserviceaccount.com
+      terraform_plan_args: -var-file=tfvars/sb.tfvars
+      terraform_state_bucket: shared-terraform-tf95c8-sb-kitchen
       terraform_version: 1.3.6
-      tf_plan_args: -var-file=tfvars/sb.tfvars
-      tf_state_bucket: shared-terraform-tf2aa7-sb-kitchen
-      tf_workspace: global-infra-sb
-      working_dir: global/infra
+      terraform_workspace: global-infra-sb
+      working_directory: global/infra
       workload_identity_provider: projects/973857465223/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      terraform_plan_secret_args: >-
+        -var=billing_account=${{ secrets.BILLING_ACCOUNT }}
