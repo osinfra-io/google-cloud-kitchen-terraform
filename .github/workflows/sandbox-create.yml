@@ -16,13 +16,13 @@ jobs:
     with:
       checkout_ref: main
       github_environment: "Sandbox Infrastructure: Global"
-      service_account: kitchen-github-actions@shared-terraform-tf95c8-sb.iam.gserviceaccount.com
+      service_account: kitchen-github-actions@shared-terraform-tfbec6-sb.iam.gserviceaccount.com
       terraform_version: 1.3.6
       terraform_plan_args: -var-file=tfvars/sb.tfvars
-      terraform_state_bucket: shared-terraform-tf95c8-sb-kitchen
+      terraform_state_bucket: shared-terraform-tfbec6-sb-kitchen
       terraform_workspace: global-infra-sb
       working_directory: global/infra
-      workload_identity_provider: projects/973857465223/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
+      workload_identity_provider: projects/1089754275893/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       terraform_plan_secret_args: >-
@@ -35,13 +35,13 @@ jobs:
     with:
       checkout_ref: ${{ github.ref }}
       github_environment: "Sandbox Infrastructure: Global"
-      service_account: kitchen-github-actions@shared-terraform-tf95c8-sb.iam.gserviceaccount.com
+      service_account: kitchen-github-actions@shared-terraform-tfbec6-sb.iam.gserviceaccount.com
       terraform_version: 1.3.6
       terraform_plan_args: -var-file=tfvars/sb.tfvars
-      terraform_state_bucket: shared-terraform-tf95c8-sb-kitchen
+      terraform_state_bucket: shared-terraform-tfbec6-sb-kitchen
       terraform_workspace: global-infra-sb
       working_directory: global/infra
-      workload_identity_provider: projects/973857465223/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
+      workload_identity_provider: projects/1089754275893/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       terraform_plan_secret_args: >-
