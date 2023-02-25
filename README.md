@@ -4,10 +4,6 @@
 
 [![Infracost](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/infracost.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/infracost.yml) [![Dependabot](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/dependabot.yml)
 
-**[Bridgecrew](https://www.bridgecrew.cloud/projects?types=Passed&repository=osinfra-io%2Fgoogle-cloud-kitchen-terraform&branch=main):**
-
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/osinfra-io/google-cloud-kitchen-terraform/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=osinfra-io%2Fgoogle-cloud-kitchen-terraform&benchmark=INFRASTRUCTURE+SECURITY) [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/osinfra-io/google-cloud-kitchen-terraform/cis_gcp)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=osinfra-io%2Fgoogle-cloud-kitchen-terraform&benchmark=CIS+GCP+V1.1)
-
 This repository creates a project for [Kitchen-Terraform](https://newcontext-oss.github.io/kitchen-terraform/) to test [Terraform](https://www.terraform.io/) child modules. It also creates any required infrastructure to run the tests.
 
 ## Terraform Documentation
