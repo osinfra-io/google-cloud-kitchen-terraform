@@ -2,7 +2,7 @@
 
 **[GitHub Actions](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions):**
 
-[![Infracost](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/infracost.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/infracost.yml) [![Dependabot](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/dependabot.yml)
+[![Dependabot](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/dependabot.yml)
 
 This repository creates a project for [Kitchen-Terraform](https://newcontext-oss.github.io/kitchen-terraform/) to test [Terraform](https://www.terraform.io/) child modules. It also creates any required infrastructure to run the tests.
 
