@@ -12,18 +12,13 @@ variable "cis_2_2_logging_sink_project_id" {
   type        = string
 }
 
-variable "env" {
-  description = "This is the environment suffix for example: sb (Sandbox), nonprod (Non-Production), prod (Production)"
+variable "environment" {
+  description = "The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production)"
   type        = string
+  default     = "sb"
 }
 
 variable "folder_id" {
-  description = "Folder ID for the project to be created in"
+  description = "The numeric ID of the folder this project should be created under. Only one of `org_id` or `folder_id` may be specified"
   type        = string
-}
-
-variable "random_project_id" {
-  description = "This will add a random value in the project ID if set to true"
-  type        = bool
-  default     = false
 }
