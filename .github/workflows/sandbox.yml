@@ -40,6 +40,7 @@ jobs:
     name: "Infra: us-east1"
     uses: osinfra-io/github-terraform-called-workflows/.github/workflows/plan-and-apply.yml@v0.1.6
     if: github.actor != 'dependabot[bot]'
+    needs: global_infra
     with:
       checkout_ref: ${{ github.ref }}
       environment: sandbox
@@ -59,6 +60,7 @@ jobs:
     name: "Infra: us-east4"
     uses: osinfra-io/github-terraform-called-workflows/.github/workflows/plan-and-apply.yml@v0.1.6
     if: github.actor != 'dependabot[bot]'
+    needs: global_infra
     with:
       checkout_ref: ${{ github.ref }}
       environment: sandbox
