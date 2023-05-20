@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   global_infra:
-    name: "Global"
+    name: "Infra: global"
     uses: osinfra-io/github-terraform-called-workflows/.github/workflows/plan-and-apply.yml@v0.1.6
     if: github.actor != 'dependabot[bot]'
     with:
@@ -35,3 +35,41 @@ jobs:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       infracost_api_key: ${{ secrets.INFRACOST_API_KEY }}
       terraform_plan_secret_args: -var=billing_account=${{ secrets.BILLING_ACCOUNT }}
+
+  us_east1_infra:
+    name: "Infra: us-east1"
+    uses: osinfra-io/github-terraform-called-workflows/.github/workflows/plan-and-apply.yml@v0.1.6
+    if: github.actor != 'dependabot[bot]'
+    with:
+      checkout_ref: ${{ github.ref }}
+      environment: sandbox
+      github_environment: "Sandbox Infrastructure: Regional - us-east1"
+      service_account: plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
+      terraform_plan_args: -var-file=tfvars/us-east1-sandbox.tfvars
+      terraform_state_bucket: plt-lz-testing-2c8b-sb
+      terraform_version: ${{ vars.TERRAFORM_VERSION }}
+      terraform_workspace: us-east1-sandbox
+      working_directory: regional/infra
+      workload_identity_provider: projects/746490462722/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
+    secrets:
+      gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      infracost_api_key: ${{ secrets.INFRACOST_API_KEY }}
+
+  us_east4_infra:
+    name: "Infra: us-east4"
+    uses: osinfra-io/github-terraform-called-workflows/.github/workflows/plan-and-apply.yml@v0.1.6
+    if: github.actor != 'dependabot[bot]'
+    with:
+      checkout_ref: ${{ github.ref }}
+      environment: sandbox
+      github_environment: "Sandbox Infrastructure: Regional - us-east4"
+      service_account: plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
+      terraform_plan_args: -var-file=tfvars/us-east4-sandbox.tfvars
+      terraform_state_bucket: plt-lz-testing-2c8b-sb
+      terraform_version: ${{ vars.TERRAFORM_VERSION }}
+      terraform_workspace: us-east4-sandbox
+      working_directory: regional/infra
+      workload_identity_provider: projects/746490462722/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
+    secrets:
+      gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      infracost_api_key: ${{ secrets.INFRACOST_API_KEY }}

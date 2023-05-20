@@ -4,8 +4,14 @@
 version: 0.1
 
 projects:
-  - name: "google-cloud-kitchen-terraform - Sandbox Infrastructure: Global"
+  - name: "google-cloud-kitchen-terraform - Sandbox Infrastructure: global"
     path: global/infra
     terraform_var_files:
       - tfvars/sandbox.tfvars
+    usage_file: global/infra/infracost/sandbox.yml
+
+  - name: "google-cloud-kitchen-terraform - Sandbox Infrastructure: us-east1"
+    path: regional/infra
+    terraform_var_files:
+      - tfvars/us-east1.tfvars
     usage_file: global/infra/infracost/sandbox.yml
