@@ -35,3 +35,13 @@ module "project" {
 
   prefix = "testing"
 }
+
+# Google VPC Module (osinfra.io)
+# https://github.com/osinfra-io/terraform-google-vpc
+
+module "vpc" {
+  source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.0"
+
+  name    = "kitchen-vpc"
+  project = module.project.project_id
+}
