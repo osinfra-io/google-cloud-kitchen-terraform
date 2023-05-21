@@ -12,6 +12,21 @@
 
 This repository creates a project for [Kitchen-Terraform](https://newcontext-oss.github.io/kitchen-terraform/) to test [Terraform](https://www.terraform.io/) child modules. It also creates any required infrastructure to run the tests.
 
-## Terraform Documentation
+## <img align="left" width="35" height="35" src="https://user-images.githubusercontent.com/1610100/209029142-410349b7-4b22-40a9-9d4d-729f07e2b4a2.png"> Development
 
-[**Global Infrastructure**](global/infra/README.md)
+>Open Source Infrastructure (as code) is a development model for infrastructure that focuses on open collaboration applying relative lessons learned from software development practices that organizations can use internally at scale. - [Open Source Infrastructure (as Code)](https://www.osinfra.io)
+
+To avoid slowing down [stream-aligned](https://teamtopologies.com/key-concepts) teams, we want to open up the possibility for contributions. The Open Source Infrastructure (as Code) model allows team members external to the platform team to contribute with only a slight increase in cognitive load. This section is for developers who want to contribute to this repository describing the tools used, the skills, and the knowledge required, along with Terraform documentation.
+
+See the documentation for setting up a local development environment [here](https://docs.osinfra.io/development-setup).
+
+### Tools
+
+- [pre-commit](https://github.com/pre-commit/pre-commit)
+- [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
+- [terraform-docs](https://github.com/terraform-docs/terraform-docs)
+
+### Terraform Documentation
+
+- [global](global/infra/README.md)
+- [regional](regional/infra/README.md)
