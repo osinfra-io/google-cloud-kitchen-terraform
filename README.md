@@ -6,7 +6,7 @@
 
 **[Infracost](https://www.infracost.io):**
 
-[![infracost](https://img.shields.io/endpoint?url=https://dashboard.api.infracost.io/shields/json/cbeecfe3-576f-4553-984c-e451a575ee47/repos/f4bdf9b0-5bfb-415d-b1e6-a39a7be8404b/branch/56bee23d-a0d4-4c85-af1f-98cec8bfa7f6/google-cloud-kitchen-terraform%2520-%2520Sandbox%2520Infrastructure%253A%2520Global)](https://dashboard.infracost.io/org/osinfra-io/repos/f4bdf9b0-5bfb-415d-b1e6-a39a7be8404b)
+[![infracost](https://img.shields.io/endpoint?url=https://dashboard.api.infracost.io/shields/json/cbeecfe3-576f-4553-984c-e451a575ee47/repos/f4bdf9b0-5bfb-415d-b1e6-a39a7be8404b/branch/56bee23d-a0d4-4c85-af1f-98cec8bfa7f6)](https://dashboard.infracost.io/org/osinfra-io/repos/f4bdf9b0-5bfb-415d-b1e6-a39a7be8404b?tab=settings)
 
 ## Repository Description
 
