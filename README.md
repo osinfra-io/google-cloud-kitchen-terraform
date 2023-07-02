@@ -1,4 +1,4 @@
-# <img align="left" width="45" height="45" src="https://user-images.githubusercontent.com/1610100/202321831-9cf218f9-660d-481f-8578-c2ba19fcc93a.png"> Google Cloud Platform - Kitchen-Terraform
+# <img align="left" width="45" height="45" src="https://github.com/osinfra-io/google-cloud-kitchen-terraform/assets/1610100/7c683778-3256-45f1-b523-5fa35f3c59cc"> Google Cloud Platform - Kitchen-Terraform
 
 **[GitHub Actions](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions):**
 
