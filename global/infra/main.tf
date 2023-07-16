@@ -34,6 +34,10 @@ module "project" {
   }
 
   prefix = "testing"
+
+  services = [
+    "dns.googleapis.com"
+  ]
 }
 
 # Google VPC Module (osinfra.io)
