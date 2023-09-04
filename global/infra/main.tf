@@ -36,7 +36,8 @@ module "project" {
   prefix = "testing"
 
   services = [
-    "dns.googleapis.com"
+    "dns.googleapis.com",
+    "pubsub.googleapis.com"
   ]
 }
 
