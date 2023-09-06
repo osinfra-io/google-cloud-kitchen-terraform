@@ -6,10 +6,28 @@ version: 0.1
 resource_type_default_usage:
   google_logging_project_sink:
     monthly_logging_data_gb: 5.0 # Monthly logging data in GB.
+  ##
+  ## The following usage values apply to each resource of the given type, which is useful when you want to define defaults.
+  ## All values are commented-out, you can uncomment resource types and customize as needed.
+  ##
+  google_pubsub_subscription:
+    monthly_message_data_tb: 0.1 # Monthly amount of message data pulled by the subscription in TB.
+    storage_gb: 1.0 # Storage for retaining acknowledged messages in GB.
+    snapshot_storage_gb: 0.0 # Snapshot storage for unacknowledged messages in GB.
+  google_pubsub_topic:
+    monthly_message_data_tb: 0.1 # Monthly amount of message data published to the topic in TB.
 # resource_usage:
   ##
   ## The following usage values apply to individual resources and override any value defined in the resource_type_default_usage section.
   ## All values are commented-out, you can uncomment resources and customize as needed.
   ##
+  # module.datadog.google_logging_project_sink.this:
+    # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.
+  # module.datadog.google_pubsub_subscription.this:
+    # monthly_message_data_tb: 0.0 # Monthly amount of message data pulled by the subscription in TB.
+    # storage_gb: 0.0 # Storage for retaining acknowledged messages in GB.
+    # snapshot_storage_gb: 0.0 # Snapshot storage for unacknowledged messages in GB.
+  # module.datadog.google_pubsub_topic.this:
+    # monthly_message_data_tb: 0.0 # Monthly amount of message data published to the topic in TB.
   # module.project.google_logging_project_sink.cis_2_2_logging_sink:
     # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.
