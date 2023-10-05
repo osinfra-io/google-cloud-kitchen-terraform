@@ -59,6 +59,7 @@ module "project" {
   prefix = "testing"
 
   services = [
+    "billingbudgets.googleapis.com",
     "cloudasset.googleapis.com",
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
@@ -66,7 +67,8 @@ module "project" {
     "dns.googleapis.com",
     "iam.googleapis.com",
     "monitoring.googleapis.com",
-    "pubsub.googleapis.com"
+    "pubsub.googleapis.com",
+    "serviceusage.googleapis.com"
   ]
 }
 
