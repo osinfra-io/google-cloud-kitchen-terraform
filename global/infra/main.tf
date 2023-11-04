@@ -18,6 +18,13 @@ terraform {
     google = {
       source = "hashicorp/google"
     }
+
+    # Random Provider
+    # https://registry.terraform.io/providers/hashicorp/random/latest/docs
+
+    random = {
+      source = "hashicorp/random"
+    }
   }
 }
 
