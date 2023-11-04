@@ -28,6 +28,9 @@ data "terraform_remote_state" "global" {
   workspace = "global-${var.environment}"
 }
 
+# Google Subnet Module (osinfra.io)
+# https://github.com/osinfra-io/terraform-google-subnet
+
 module "subnet" {
   source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.0"
 
