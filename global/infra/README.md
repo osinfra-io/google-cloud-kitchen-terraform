@@ -13,7 +13,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_project"></a> [project](#module\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.6 |
+| <a name="module_host_project"></a> [host\_project](#module\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.6 |
+| <a name="module_service_project"></a> [service\_project](#module\_service\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.6 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
 
 ## Resources
@@ -35,5 +36,6 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_project_id"></a> [project\_id](#output\_project\_id) | The project ID |
+| <a name="output_host_project_id"></a> [host\_project\_id](#output\_host\_project\_id) | The project ID |
+| <a name="output_service_project_id"></a> [service\_project\_id](#output\_service\_project\_id) | The project ID |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

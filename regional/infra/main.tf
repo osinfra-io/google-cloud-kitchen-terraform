@@ -28,12 +28,15 @@ data "terraform_remote_state" "global" {
   workspace = "global-${var.environment}"
 }
 
+# Google Subnet Module (osinfra.io)
+# https://github.com/osinfra-io/terraform-google-subnet
+
 module "subnet" {
   source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.0"
 
   ip_cidr_range = var.ip_cidr_range
   name          = "kitchen-subnet-${var.region}"
   network       = "kitchen-vpc"
-  project       = local.global.project_id
+  project       = local.global.host_project_id
   region        = var.region
 }
