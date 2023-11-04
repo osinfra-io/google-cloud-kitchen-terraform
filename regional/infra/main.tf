@@ -34,6 +34,6 @@ module "subnet" {
   ip_cidr_range = var.ip_cidr_range
   name          = "kitchen-subnet-${var.region}"
   network       = "kitchen-vpc"
-  project       = local.global.project_id
+  project       = local.global.host_project_id
   region        = var.region
 }

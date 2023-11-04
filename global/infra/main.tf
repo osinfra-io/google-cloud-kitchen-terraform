@@ -40,7 +40,7 @@ provider "datadog" {
 # Google Project Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-project
 
-module "service_project" {
+module "host_project" {
   source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.6"
 
   billing_account                 = var.billing_account
@@ -72,7 +72,7 @@ module "service_project" {
   ]
 }
 
-module "host_project" {
+module "service_project" {
   source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.6"
 
   billing_account                 = var.billing_account
@@ -112,6 +112,6 @@ module "vpc" {
   source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.1"
 
   name       = "kitchen-vpc"
-  project    = module.service_project.project_id
+  project    = module.host_project.project_id
   shared_vpc = true
 }
