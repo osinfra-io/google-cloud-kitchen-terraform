@@ -40,7 +40,7 @@ provider "datadog" {
 # Google Project Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-project
 
-module "project" {
+module "service_project" {
   source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.6"
 
   billing_account                 = var.billing_account
@@ -72,6 +72,39 @@ module "project" {
   ]
 }
 
+module "host_project" {
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.6"
+
+  billing_account                 = var.billing_account
+  cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
+  cost_center                     = "x001"
+  description                     = "kitchen"
+  environment                     = var.environment
+  folder_id                       = var.folder_id
+
+  labels = {
+    "environment" = var.environment,
+    "description" = "kitchen",
+    "platform"    = "google-cloud-landing-zone",
+  }
+
+  prefix = "testing"
+
+  services = [
+    "billingbudgets.googleapis.com",
+    "cloudasset.googleapis.com",
+    "cloudbilling.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "container.googleapis.com",
+    "compute.googleapis.com",
+    "dns.googleapis.com",
+    "iam.googleapis.com",
+    "monitoring.googleapis.com",
+    "pubsub.googleapis.com",
+    "serviceusage.googleapis.com"
+  ]
+}
+
 # Google VPC Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-vpc
 
@@ -79,6 +112,6 @@ module "vpc" {
   source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.1"
 
   name       = "kitchen-vpc"
-  project    = module.project.project_id
+  project    = module.service_project.project_id
   shared_vpc = true
 }
