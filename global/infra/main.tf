@@ -78,6 +78,7 @@ module "project" {
 module "vpc" {
   source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.1"
 
-  name    = "kitchen-vpc"
-  project = module.project.project_id
+  name       = "kitchen-vpc"
+  project    = module.project.project_id
+  shared_vpc = true
 }
