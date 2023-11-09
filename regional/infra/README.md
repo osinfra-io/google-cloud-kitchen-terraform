@@ -31,6 +31,7 @@ No requirements.
 | <a name="input_ip_cidr_range"></a> [ip\_cidr\_range](#input\_ip\_cidr\_range) | The range of internal addresses that are owned by this subnetwork | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region for this subnetwork | `string` | n/a | yes |
 | <a name="input_remote_bucket"></a> [remote\_bucket](#input\_remote\_bucket) | The remote bucket the `terraform_remote_state` data source retrieves the state from | `string` | n/a | yes |
+| <a name="input_secondary_ip_ranges"></a> [secondary\_ip\_ranges](#input\_secondary\_ip\_ranges) | An array of configurations for secondary IP ranges for VM instances contained in this subnetwork | <pre>list(object({<br>    ip_cidr_range = string<br>    range_name    = string<br>  }))</pre> | n/a | yes |
 
 ## Outputs
 
