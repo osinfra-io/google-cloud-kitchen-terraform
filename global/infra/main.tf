@@ -102,6 +102,7 @@ module "service_project" {
     "billingbudgets.googleapis.com",
     "cloudasset.googleapis.com",
     "cloudbilling.googleapis.com",
+    "cloudkms.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "container.googleapis.com",
     "compute.googleapis.com",
