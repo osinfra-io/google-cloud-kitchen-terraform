@@ -128,6 +128,6 @@ module "vpc" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project
 
 resource "google_compute_shared_vpc_service_project" "this" {
-  host_project    = module.service_project.project_id
-  service_project = module.host_project.project_id
+  host_project    = module.host_project.project_id
+  service_project = module.service_project.project_id
 }
