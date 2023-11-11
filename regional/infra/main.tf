@@ -41,3 +41,21 @@ module "subnet" {
   region              = var.region
   secondary_ip_ranges = var.secondary_ip_ranges
 }
+
+# Compute Subnetwork IAM Member Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
+
+resource "google_compute_subnetwork_iam_member" "this" {
+  for_each = toset(
+    [
+      "serviceAccount:${local.global.service_project_number}@cloudservices.gserviceaccount.com",
+      "serviceAccount:service-${local.global.service_project_number}@container-engine-robot.iam.gserviceaccount.com"
+    ]
+  )
+
+  member     = each.key
+  project    = local.global.host_project_id
+  region     = var.region
+  role       = "roles/compute.networkUser"
+  subnetwork = "kitchen-subnet-${var.region}"
+}
