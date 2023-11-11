@@ -131,3 +131,13 @@ resource "google_compute_shared_vpc_service_project" "this" {
   host_project    = module.host_project.project_id
   service_project = module.service_project.project_id
 }
+
+resource "google_project_iam_member" "this" {
+  for_each = toset([
+    "organizations/163313809793/roles/kubernetes.hostFirewallManagement",
+    "roles/container.hostServiceAgentUser"
+  ])
+  member  = "serviceAccount:service-${module.service_project.project_number}@container-engine-robot.iam.gserviceaccount.com"
+  project = module.host_project.project_id
+  role    = each.key
+}
