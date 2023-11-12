@@ -110,7 +110,8 @@ module "service_project" {
     "iam.googleapis.com",
     "monitoring.googleapis.com",
     "pubsub.googleapis.com",
-    "serviceusage.googleapis.com"
+    "serviceusage.googleapis.com",
+    "storage.googleapis.com"
   ]
 }
 
