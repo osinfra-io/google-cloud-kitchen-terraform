@@ -76,8 +76,7 @@ module "host_project" {
     "iam.googleapis.com",
     "monitoring.googleapis.com",
     "pubsub.googleapis.com",
-    "serviceusage.googleapis.com",
-    "storage.googleapis.com"
+    "serviceusage.googleapis.com"
   ]
 }
 
@@ -111,8 +110,7 @@ module "service_project" {
     "iam.googleapis.com",
     "monitoring.googleapis.com",
     "pubsub.googleapis.com",
-    "serviceusage.googleapis.com",
-    "storage.googleapis.com"
+    "serviceusage.googleapis.com"
   ]
 }
 
