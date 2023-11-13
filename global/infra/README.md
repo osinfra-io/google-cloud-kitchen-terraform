@@ -7,7 +7,9 @@ No requirements.
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_google"></a> [google](#provider\_google) | 5.5.0 |
 
 ## Modules
 
@@ -19,7 +21,10 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [google_compute_shared_vpc_service_project.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project) | resource |
+| [google_project_iam_member.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 
 ## Inputs
 
@@ -38,4 +43,5 @@ No resources.
 |------|-------------|
 | <a name="output_host_project_id"></a> [host\_project\_id](#output\_host\_project\_id) | The project ID |
 | <a name="output_service_project_id"></a> [service\_project\_id](#output\_service\_project\_id) | The project ID |
+| <a name="output_service_project_number"></a> [service\_project\_number](#output\_service\_project\_number) | The project number |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

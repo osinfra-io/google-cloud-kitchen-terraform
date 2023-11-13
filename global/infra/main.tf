@@ -71,6 +71,7 @@ module "host_project" {
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
+    "container.googleapis.com",
     "dns.googleapis.com",
     "iam.googleapis.com",
     "monitoring.googleapis.com",
@@ -101,9 +102,10 @@ module "service_project" {
     "billingbudgets.googleapis.com",
     "cloudasset.googleapis.com",
     "cloudbilling.googleapis.com",
+    "cloudkms.googleapis.com",
     "cloudresourcemanager.googleapis.com",
-    "container.googleapis.com",
     "compute.googleapis.com",
+    "container.googleapis.com",
     "dns.googleapis.com",
     "iam.googleapis.com",
     "monitoring.googleapis.com",
@@ -121,4 +123,22 @@ module "vpc" {
   name       = "kitchen-vpc"
   project    = module.host_project.project_id
   shared_vpc = true
+}
+
+# Compute Shared VPC Service Project Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project
+
+resource "google_compute_shared_vpc_service_project" "this" {
+  host_project    = module.host_project.project_id
+  service_project = module.service_project.project_id
+}
+
+resource "google_project_iam_member" "this" {
+  for_each = toset([
+    "organizations/163313809793/roles/kubernetes.hostFirewallManagement",
+    "roles/container.hostServiceAgentUser"
+  ])
+  member  = "serviceAccount:service-${module.service_project.project_number}@container-engine-robot.iam.gserviceaccount.com"
+  project = module.host_project.project_id
+  role    = each.key
 }
