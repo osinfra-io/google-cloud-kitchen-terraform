@@ -76,6 +76,7 @@ module "host_project" {
     "iam.googleapis.com",
     "monitoring.googleapis.com",
     "pubsub.googleapis.com",
+    "servicenetworking.googleapis.com",
     "serviceusage.googleapis.com"
   ]
 }
@@ -110,6 +111,7 @@ module "service_project" {
     "iam.googleapis.com",
     "monitoring.googleapis.com",
     "pubsub.googleapis.com",
+    "servicenetworking.googleapis.com",
     "serviceusage.googleapis.com"
   ]
 }
@@ -123,6 +125,19 @@ module "vpc" {
   name       = "kitchen-vpc"
   project    = module.host_project.project_id
   shared_vpc = true
+}
+
+# Compute Global Address Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address
+
+resource "google_compute_global_address" "service_network_peering_range" {
+  address       = "172.16.0.0"
+  address_type  = "INTERNAL"
+  name          = "service-network-peering-range"
+  network       = module.vpc.self_link
+  prefix_length = 16
+  project       = module.host_project.project_id
+  purpose       = "VPC_PEERING"
 }
 
 # Compute Shared VPC Service Project Resource
@@ -141,4 +156,13 @@ resource "google_project_iam_member" "this" {
   member  = "serviceAccount:service-${module.service_project.project_number}@container-engine-robot.iam.gserviceaccount.com"
   project = module.host_project.project_id
   role    = each.key
+}
+
+# Service Networking Connection Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection
+
+resource "google_service_networking_connection" "this" {
+  network                 = module.vpc.self_link
+  reserved_peering_ranges = [google_compute_global_address.service_network_peering_range.name]
+  service                 = "servicenetworking.googleapis.com"
 }
