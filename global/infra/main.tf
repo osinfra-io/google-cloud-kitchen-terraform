@@ -129,7 +129,7 @@ module "vpc" {
 # Compute Global Address Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address
 
-resource "google_compute_global_address" "service_network_peering" {
+resource "google_compute_global_address" "service_network_peering_range" {
   address       = "172.16.0.0"
   address_type  = "INTERNAL"
   name          = "service-network-peering-range"
@@ -160,8 +160,8 @@ resource "google_project_iam_member" "this" {
 # Service Networking Connection Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection
 
-resource "google_service_networking_connection" "standard_shared" {
+resource "google_service_networking_connection" "this" {
   network                 = module.vpc.self_link
-  reserved_peering_ranges = [google_compute_global_address.service_network_peering.name]
+  reserved_peering_ranges = [google_compute_global_address.service_network_peering_range.name]
   service                 = "servicenetworking.googleapis.com"
 }
