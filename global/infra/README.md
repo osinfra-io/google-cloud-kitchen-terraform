@@ -9,14 +9,14 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.6.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 5.8.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_host_project"></a> [host\_project](#module\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.6 |
-| <a name="module_service_project"></a> [service\_project](#module\_service\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.6 |
+| <a name="module_host_project"></a> [host\_project](#module\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
+| <a name="module_service_project"></a> [service\_project](#module\_service\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
 
 ## Resources
