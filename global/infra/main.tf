@@ -73,11 +73,15 @@ module "host_project" {
     "compute.googleapis.com",
     "container.googleapis.com",
     "dns.googleapis.com",
+    "gkehub.googleapis.com",
     "iam.googleapis.com",
     "monitoring.googleapis.com",
+    "multiclusteringress.googleapis.com",
+    "multiclusterservicediscovery.googleapis.com",
     "pubsub.googleapis.com",
     "servicenetworking.googleapis.com",
-    "serviceusage.googleapis.com"
+    "serviceusage.googleapis.com",
+    "trafficdirector.googleapis.com"
   ]
 }
 
