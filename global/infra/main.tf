@@ -107,7 +107,7 @@ module "service_project" {
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
     "container.googleapis.com",
-    "dns.googleapis.com",A
+    "dns.googleapis.com",
     "gkehub.googleapis.com",
     "iam.googleapis.com",
     "monitoring.googleapis.com",
