@@ -189,7 +189,7 @@ resource "google_compute_global_address" "service_network_peering_range" {
 resource "google_compute_shared_vpc_service_project" "this" {
   for_each = local.vpc_service_projects
 
-  host_project    = module.vpc_host_project.project_id
+  host_project    = module.vpc.project
   service_project = each.value.id
 }
 
