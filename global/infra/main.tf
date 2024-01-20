@@ -39,9 +39,11 @@ provider "datadog" {
 # module "datadog" {
 #   source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.0"
 
+#   for_each = local.projects
+
 #   api_key         = var.datadog_api_key
 #   is_cspm_enabled = true
-#   project         = module.project.project_id
+#   project         = each.value.id
 # }
 
 # Google Project Module (osinfra.io)
@@ -63,7 +65,7 @@ module "vpc_host_project" {
     "platform"    = "google-cloud-landing-zone",
   }
 
-  prefix = "testing"
+  prefix = "test"
 
   services = [
     "billingbudgets.googleapis.com",
@@ -97,7 +99,7 @@ module "gke_fleet_host_project" {
     "platform"    = "google-cloud-landing-zone",
   }
 
-  prefix = "testing"
+  prefix = "test"
 
   services = [
     "billingbudgets.googleapis.com",
@@ -136,7 +138,7 @@ module "gke_fleet_service_project" {
     "platform"    = "google-cloud-landing-zone",
   }
 
-  prefix = "testing"
+  prefix = "test"
 
   services = [
     "billingbudgets.googleapis.com",

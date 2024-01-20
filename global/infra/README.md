@@ -15,6 +15,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_datadog"></a> [datadog](#module\_datadog) | github.com/osinfra-io/terraform-datadog-google-integration//global | v0.1.0 |
 | <a name="module_gke_fleet_host_project"></a> [gke\_fleet\_host\_project](#module\_gke\_fleet\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 | <a name="module_gke_fleet_service_project"></a> [gke\_fleet\_service\_project](#module\_gke\_fleet\_service\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
