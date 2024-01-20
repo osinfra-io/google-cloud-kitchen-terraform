@@ -9,15 +9,16 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.8.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 5.12.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_host_project"></a> [host\_project](#module\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
-| <a name="module_service_project"></a> [service\_project](#module\_service\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
+| <a name="module_gke_fleet_host_project"></a> [gke\_fleet\_host\_project](#module\_gke\_fleet\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
+| <a name="module_gke_fleet_service_project"></a> [gke\_fleet\_service\_project](#module\_gke\_fleet\_service\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
+| <a name="module_vpc_host_project"></a> [vpc\_host\_project](#module\_vpc\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 
 ## Resources
 
@@ -25,7 +26,8 @@ No requirements.
 |------|------|
 | [google_compute_global_address.service_network_peering_range](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address) | resource |
 | [google_compute_shared_vpc_service_project.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project) | resource |
-| [google_project_iam_member.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.container_engine_firewall_management](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.container_engine_service_agent_user](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 | [google_service_networking_connection.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection) | resource |
 
 ## Inputs
@@ -41,9 +43,5 @@ No requirements.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_host_project_id"></a> [host\_project\_id](#output\_host\_project\_id) | The project ID |
-| <a name="output_service_project_id"></a> [service\_project\_id](#output\_service\_project\_id) | The project ID |
-| <a name="output_service_project_number"></a> [service\_project\_number](#output\_service\_project\_number) | The project number |
+No outputs.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

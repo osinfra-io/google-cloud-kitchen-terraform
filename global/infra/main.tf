@@ -47,19 +47,19 @@ provider "datadog" {
 # Google Project Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-project
 
-module "host_project" {
+module "vpc_host_project" {
   source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.8"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
   cost_center                     = "x001"
-  description                     = "kitchen"
+  description                     = "vpc-host"
   environment                     = var.environment
   folder_id                       = var.folder_id
 
   labels = {
     "environment" = var.environment,
-    "description" = "kitchen",
+    "description" = "vpc-host",
     "platform"    = "google-cloud-landing-zone",
   }
 
@@ -81,19 +81,19 @@ module "host_project" {
   ]
 }
 
-module "service_project" {
+module "gke_fleet_host_project" {
   source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.8"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
   cost_center                     = "x001"
-  description                     = "kitchen"
+  description                     = "gke-fleet-host"
   environment                     = var.environment
   folder_id                       = var.folder_id
 
   labels = {
     "environment" = var.environment,
-    "description" = "kitchen",
+    "description" = "gke-fleet-host",
     "platform"    = "google-cloud-landing-zone",
   }
 
@@ -120,6 +120,43 @@ module "service_project" {
   ]
 }
 
+module "gke_fleet_service_project" {
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.8"
+
+  billing_account                 = var.billing_account
+  cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
+  cost_center                     = "x001"
+  description                     = "gke-fleet-service"
+  environment                     = var.environment
+  folder_id                       = var.folder_id
+
+  labels = {
+    "environment" = var.environment,
+    "description" = "gke-fleet-service",
+    "platform"    = "google-cloud-landing-zone",
+  }
+
+  prefix = "testing"
+
+  services = [
+    "billingbudgets.googleapis.com",
+    "cloudasset.googleapis.com",
+    "cloudbilling.googleapis.com",
+    "cloudkms.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "compute.googleapis.com",
+    "container.googleapis.com",
+    "dns.googleapis.com",
+    "iam.googleapis.com",
+    "monitoring.googleapis.com",
+    "multiclusterservicediscovery.googleapis.com",
+    "pubsub.googleapis.com",
+    "servicenetworking.googleapis.com",
+    "serviceusage.googleapis.com",
+    "trafficdirector.googleapis.com"
+  ]
+}
+
 # Google VPC Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-vpc
 
@@ -127,7 +164,7 @@ module "vpc" {
   source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.1"
 
   name       = "kitchen-vpc"
-  project    = module.host_project.project_id
+  project    = module.vpc_host_project.project_id
   shared_vpc = true
 }
 
@@ -140,7 +177,7 @@ resource "google_compute_global_address" "service_network_peering_range" {
   name          = "service-network-peering-range"
   network       = module.vpc.self_link
   prefix_length = 16
-  project       = module.host_project.project_id
+  project       = module.vpc_host_project.project_id
   purpose       = "VPC_PEERING"
 }
 
@@ -148,18 +185,29 @@ resource "google_compute_global_address" "service_network_peering_range" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project
 
 resource "google_compute_shared_vpc_service_project" "this" {
-  host_project    = module.host_project.project_id
-  service_project = module.service_project.project_id
+  for_each = local.vpc_service_projects
+
+  host_project    = module.vpc_host_project.project_id
+  service_project = each.key
 }
 
-resource "google_project_iam_member" "this" {
-  for_each = toset([
-    "organizations/163313809793/roles/kubernetes.hostFirewallManagement",
-    "roles/container.hostServiceAgentUser"
-  ])
-  member  = "serviceAccount:service-${module.service_project.project_number}@container-engine-robot.iam.gserviceaccount.com"
-  project = module.host_project.project_id
-  role    = each.key
+# Project IAM Member Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam_member
+
+resource "google_project_iam_member" "container_engine_firewall_management" {
+  for_each = { for k, v in local.vpc_service_projects : k => v if lookup(v, "number", null) != null }
+
+  member  = "serviceAccount:service-${lookup(each.value, "number")}@container-engine-robot.iam.gserviceaccount.com"
+  project = module.vpc_host_project.project_id
+  role    = "organizations/163313809793/roles/kubernetes.hostFirewallManagement"
+}
+
+resource "google_project_iam_member" "container_engine_service_agent_user" {
+  for_each = { for k, v in local.vpc_service_projects : k => v if lookup(v, "number", null) != null }
+
+  member  = "serviceAccount:service-${lookup(each.value, "number")}@container-engine-robot.iam.gserviceaccount.com"
+  project = module.vpc_host_project.project_id
+  role    = "roles/container.hostServiceAgentUser"
 }
 
 # Service Networking Connection Resource
