@@ -38,7 +38,7 @@ module "subnet" {
   name                     = "kitchen-subnet-${var.region}"
   network                  = "kitchen-vpc"
   private_ip_google_access = true
-  project                  = local.global.host_project_id
+  project                  = local.global.vpc_host_project_id
   region                   = var.region
   secondary_ip_ranges      = var.secondary_ip_ranges
 }
@@ -55,7 +55,7 @@ resource "google_compute_subnetwork_iam_member" "this" {
   )
 
   member     = each.key
-  project    = local.global.host_project_id
+  project    = local.global.vpc_host_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
   subnetwork = "kitchen-subnet-${var.region}"
