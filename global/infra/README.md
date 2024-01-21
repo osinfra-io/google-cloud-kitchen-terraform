@@ -15,7 +15,6 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_datadog"></a> [datadog](#module\_datadog) | github.com/osinfra-io/terraform-datadog-google-integration//global | v0.1.0 |
 | <a name="module_gke_fleet_host_project"></a> [gke\_fleet\_host\_project](#module\_gke\_fleet\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 | <a name="module_gke_fleet_service_project"></a> [gke\_fleet\_service\_project](#module\_gke\_fleet\_service\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
@@ -44,5 +43,10 @@ No requirements.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_gke_fleet_host_project_id"></a> [gke\_fleet\_host\_project\_id](#output\_gke\_fleet\_host\_project\_id) | The ID of the GKE Fleet Host Project |
+| <a name="output_gke_fleet_service_project_id"></a> [gke\_fleet\_service\_project\_id](#output\_gke\_fleet\_service\_project\_id) | The ID of the GKE Fleet Service Project |
+| <a name="output_vpc_host_project_id"></a> [vpc\_host\_project\_id](#output\_vpc\_host\_project\_id) | The ID of the VPC Host Project |
+| <a name="output_vpc_service_project_id"></a> [vpc\_service\_project\_id](#output\_vpc\_service\_project\_id) | The ID of the VPC Service Project |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

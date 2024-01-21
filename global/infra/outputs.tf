@@ -15,3 +15,8 @@ output "vpc_host_project_id" {
   description = "The ID of the VPC Host Project"
   value       = module.vpc_host_project.project_id
 }
+
+output "vpc_service_project_id" {
+  description = "The ID of the VPC Service Project"
+  value       = [for k in local.vpc_service_projects : k.id]
+}
