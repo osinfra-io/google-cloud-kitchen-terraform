@@ -14,6 +14,15 @@ terraform {
   }
 }
 
+# Project Data Source
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/google_project
+
+data "google_project" "this" {
+  for_each = toset(local.global.vpc_service_project_ids)
+
+  project_id = each.value
+}
+
 # Terraform Remote State Datasource
 # https://www.terraform.io/docs/language/state/remote-state-data.html
 
@@ -46,15 +55,20 @@ module "subnet" {
 # Compute Subnetwork IAM Member Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
 
-resource "google_compute_subnetwork_iam_member" "this" {
-  for_each = toset(
-    [
-      "serviceAccount:${local.global.service_project_number}@cloudservices.gserviceaccount.com",
-      "serviceAccount:service-${local.global.service_project_number}@container-engine-robot.iam.gserviceaccount.com"
-    ]
-  )
+resource "google_compute_subnetwork_iam_member" "cloudservices" {
+  for_each = toset(local.global.vpc_service_project_ids)
 
-  member     = each.key
+  member     = "serviceAccount:${data.google_project.this[each.key].number}@cloudservices.gserviceaccount.com"
+  project    = local.global.vpc_host_project_id
+  region     = var.region
+  role       = "roles/compute.networkUser"
+  subnetwork = "kitchen-subnet-${var.region}"
+}
+
+resource "google_compute_subnetwork_iam_member" "container_engine" {
+  for_each = toset(local.global.vpc_service_project_ids)
+
+  member     = "serviceAccount:service-${data.google_project.this[each.key].number}@container-engine-robot.iam.gserviceaccount.com"
   project    = local.global.vpc_host_project_id
   region     = var.region
   role       = "roles/compute.networkUser"

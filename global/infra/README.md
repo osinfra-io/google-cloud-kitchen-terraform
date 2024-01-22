@@ -48,5 +48,5 @@ No requirements.
 | <a name="output_gke_fleet_host_project_id"></a> [gke\_fleet\_host\_project\_id](#output\_gke\_fleet\_host\_project\_id) | The ID of the GKE Fleet Host Project |
 | <a name="output_gke_fleet_service_project_id"></a> [gke\_fleet\_service\_project\_id](#output\_gke\_fleet\_service\_project\_id) | The ID of the GKE Fleet Service Project |
 | <a name="output_vpc_host_project_id"></a> [vpc\_host\_project\_id](#output\_vpc\_host\_project\_id) | The ID of the VPC Host Project |
-| <a name="output_vpc_service_project_id"></a> [vpc\_service\_project\_id](#output\_vpc\_service\_project\_id) | The ID of the VPC Service Project |
+| <a name="output_vpc_service_project_ids"></a> [vpc\_service\_project\_ids](#output\_vpc\_service\_project\_ids) | The ID of the VPC Service Project |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
