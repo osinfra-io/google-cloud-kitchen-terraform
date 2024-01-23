@@ -32,7 +32,7 @@ data "terraform_remote_state" "global" {
 # https://github.com/osinfra-io/terraform-google-subnet
 
 module "subnet" {
-  source   = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.0"
+  source   = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.1"
   for_each = var.subnets
 
   ip_cidr_range            = each.value.ip_cidr_range
@@ -54,7 +54,7 @@ resource "google_compute_subnetwork_iam_member" "cloudservices" {
   project    = local.global.vpc_host_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
-  subnetwork = module.subnet.name[each.key]
+  subnetwork = module.subnet[each.key].name
 }
 
 resource "google_compute_subnetwork_iam_member" "container_engine" {
@@ -64,5 +64,5 @@ resource "google_compute_subnetwork_iam_member" "container_engine" {
   project    = local.global.vpc_host_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
-  subnetwork = module.subnet.name[each.key]
+  subnetwork = module.subnet[each.key].name
 }
