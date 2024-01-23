@@ -4,9 +4,11 @@ variable "environment" {
   default     = "sb"
 }
 
-variable "ip_cidr_range" {
-  description = "The range of internal addresses that are owned by this subnetwork"
-  type        = string
+variable "google_compute_subnetwork_iam_members" {
+  description = "A map of IAM members to add to the subnetwork"
+  type = map(object({
+    project_number = string
+  }))
 }
 
 variable "region" {
@@ -19,10 +21,13 @@ variable "remote_bucket" {
   description = "The remote bucket the `terraform_remote_state` data source retrieves the state from"
 }
 
-variable "secondary_ip_ranges" {
-  description = "An array of configurations for secondary IP ranges for VM instances contained in this subnetwork"
-  type = list(object({
+variable "subnets" {
+  description = "A map of subnets to create"
+  type = map(object({
     ip_cidr_range = string
-    range_name    = string
+    secondary_ip_ranges = list(object({
+      ip_cidr_range = string
+      range_name    = string
+    }))
   }))
 }
