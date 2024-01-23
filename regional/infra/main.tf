@@ -54,7 +54,7 @@ resource "google_compute_subnetwork_iam_member" "cloudservices" {
   project    = local.global.vpc_host_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
-  subnetwork = "${each.key}-${var.region}"
+  subnetwork = module.subnet.name[each.key]
 }
 
 resource "google_compute_subnetwork_iam_member" "container_engine" {
@@ -64,5 +64,5 @@ resource "google_compute_subnetwork_iam_member" "container_engine" {
   project    = local.global.vpc_host_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
-  subnetwork = "${each.key}-${var.region}"
+  subnetwork = module.subnet.name[each.key]
 }
