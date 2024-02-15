@@ -31,7 +31,7 @@ resource_type_default_usage:
       # worldwide: 0 # to a Google Cloud region on another continent.
   # module.gke_fleet_host_project.google_logging_project_sink.cis_2_2_logging_sink:
     # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.
-  # module.gke_fleet_service_project.google_logging_project_sink.cis_2_2_logging_sink:
+  # module.gke_fleet_member_project.google_logging_project_sink.cis_2_2_logging_sink:
     # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.
   # module.vpc_host_project.google_logging_project_sink.cis_2_2_logging_sink:
     # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.

@@ -9,14 +9,14 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.12.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 5.16.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_gke_fleet_host_project"></a> [gke\_fleet\_host\_project](#module\_gke\_fleet\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
-| <a name="module_gke_fleet_service_project"></a> [gke\_fleet\_service\_project](#module\_gke\_fleet\_service\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
+| <a name="module_gke_fleet_member_project"></a> [gke\_fleet\_member\_project](#module\_gke\_fleet\_member\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
 | <a name="module_vpc_host_project"></a> [vpc\_host\_project](#module\_vpc\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.8 |
 
@@ -46,7 +46,7 @@ No requirements.
 | Name | Description |
 |------|-------------|
 | <a name="output_gke_fleet_host_project_id"></a> [gke\_fleet\_host\_project\_id](#output\_gke\_fleet\_host\_project\_id) | The ID of the GKE Fleet Host Project |
-| <a name="output_gke_fleet_service_project_id"></a> [gke\_fleet\_service\_project\_id](#output\_gke\_fleet\_service\_project\_id) | The ID of the GKE Fleet Service Project |
+| <a name="output_gke_fleet_member_project_id"></a> [gke\_fleet\_member\_project\_id](#output\_gke\_fleet\_member\_project\_id) | The ID of the GKE Fleet Service Project |
 | <a name="output_vpc_host_project_id"></a> [vpc\_host\_project\_id](#output\_vpc\_host\_project\_id) | The ID of the VPC Host Project |
 | <a name="output_vpc_service_project_ids"></a> [vpc\_service\_project\_ids](#output\_vpc\_service\_project\_ids) | The ID of the VPC Service Project |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

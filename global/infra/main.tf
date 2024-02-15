@@ -60,9 +60,10 @@ module "vpc_host_project" {
   folder_id                       = var.folder_id
 
   labels = {
-    "environment" = var.environment,
-    "description" = "vpc-host",
-    "platform"    = "google-cloud-landing-zone",
+    environment = var.environment,
+    description = "vpc-host",
+    platform    = "google-cloud-landing-zone",
+    team        = "platform-engineering"
   }
 
   prefix = "test"
@@ -94,9 +95,10 @@ module "gke_fleet_host_project" {
   folder_id                       = var.folder_id
 
   labels = {
-    "environment" = var.environment,
-    "description" = "gke-fleet-host",
-    "platform"    = "google-cloud-landing-zone",
+    environment = var.environment,
+    description = "gke-fleet-host",
+    platform    = "google-cloud-landing-zone",
+    team        = "platform-engineering"
   }
 
   prefix = "test"
@@ -122,20 +124,21 @@ module "gke_fleet_host_project" {
   ]
 }
 
-module "gke_fleet_service_project" {
+module "gke_fleet_member_project" {
   source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.8"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
   cost_center                     = "x001"
-  description                     = "gke-fleet-service"
+  description                     = "gke-fleet-member"
   environment                     = var.environment
   folder_id                       = var.folder_id
 
   labels = {
-    "environment" = var.environment,
-    "description" = "gke-fleet-service",
-    "platform"    = "google-cloud-landing-zone",
+    environment = var.environment,
+    description = "gke-fleet-member",
+    platform    = "google-cloud-landing-zone",
+    team        = "platform-engineering"
   }
 
   prefix = "test"
