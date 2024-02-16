@@ -50,7 +50,7 @@ provider "datadog" {
 # https://github.com/osinfra-io/terraform-google-project
 
 module "vpc_host_project" {
-  source = "github.com/osinfra-io/terraform-google-project/brettcurtis/issue86//global"
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=brettcurtis/issue86"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
@@ -85,7 +85,7 @@ module "vpc_host_project" {
 }
 
 module "gke_fleet_host_project" {
-  source = "github.com/osinfra-io/terraform-google-project/brettcurtis/issue86//global"
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=brettcurtis/issue86"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
@@ -125,7 +125,7 @@ module "gke_fleet_host_project" {
 }
 
 module "gke_fleet_member_project" {
-  source = "github.com/osinfra-io/terraform-google-project/brettcurtis/issue86//global"
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=brettcurtis/issue86"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
