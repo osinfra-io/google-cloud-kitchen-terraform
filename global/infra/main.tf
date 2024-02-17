@@ -60,7 +60,7 @@ module "vpc_host_project" {
   folder_id                       = var.folder_id
 
   labels = {
-    environment = var.environment,
+    env         = var.environment,
     description = "vpc-host",
     platform    = "google-cloud-landing-zone",
     team        = "platform-engineering"
@@ -95,7 +95,7 @@ module "gke_fleet_host_project" {
   folder_id                       = var.folder_id
 
   labels = {
-    environment = var.environment,
+    env         = var.environment,
     description = "gke-fleet-host",
     platform    = "google-cloud-landing-zone",
     team        = "platform-engineering"
@@ -135,7 +135,7 @@ module "gke_fleet_member_project" {
   folder_id                       = var.folder_id
 
   labels = {
-    environment = var.environment,
+    env         = var.environment,
     description = "gke-fleet-member",
     platform    = "google-cloud-landing-zone",
     team        = "platform-engineering"
