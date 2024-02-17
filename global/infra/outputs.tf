@@ -1,17 +1,22 @@
 # Output Values
 # https://www.terraform.io/language/values/outputs
 
-output "host_project_id" {
-  description = "The project ID"
-  value       = module.host_project.project_id
+output "gke_fleet_host_project_id" {
+  description = "The ID of the GKE Fleet Host Project"
+  value       = module.gke_fleet_host_project.project_id
 }
 
-output "service_project_id" {
-  description = "The project ID"
-  value       = module.service_project.project_id
+output "gke_fleet_member_project_id" {
+  description = "The ID of the GKE Fleet Service Project"
+  value       = module.gke_fleet_member_project.project_id
 }
 
-output "service_project_number" {
-  description = "The project number"
-  value       = module.service_project.project_number
+output "vpc_host_project_id" {
+  description = "The ID of the VPC Host Project"
+  value       = module.vpc_host_project.project_id
+}
+
+output "vpc_service_project_ids" {
+  description = "The ID of the VPC Service Project"
+  value       = [for k in local.vpc_service_projects : k.id]
 }
