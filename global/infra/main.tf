@@ -63,7 +63,8 @@ module "vpc_host_project" {
     env         = var.environment,
     description = "vpc-host",
     platform    = "google-cloud-landing-zone",
-    team        = "platform-engineering"
+    repository  = "google-cloud-kitchen-terraform",
+    team        = "platform-google-cloud-landing-zone"
   }
 
   prefix = "test"
@@ -98,7 +99,8 @@ module "gke_fleet_host_project" {
     env         = var.environment,
     description = "gke-fleet-host",
     platform    = "google-cloud-landing-zone",
-    team        = "platform-engineering"
+    repository  = "google-cloud-kitchen-terraform",
+    team        = "platform-google-cloud-landing-zone"
   }
 
   prefix = "test"
