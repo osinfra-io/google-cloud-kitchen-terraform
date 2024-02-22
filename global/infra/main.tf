@@ -138,7 +138,8 @@ module "gke_fleet_member_project" {
     env         = var.environment,
     description = "gke-fleet-member",
     platform    = "google-cloud-landing-zone",
-    team        = "platform-engineering"
+    repository  = "google-cloud-kitchen-terraform",
+    team        = "platform-google-cloud-landing-zone"
   }
 
   prefix = "test"
