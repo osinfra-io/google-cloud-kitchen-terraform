@@ -46,6 +46,27 @@ provider "datadog" {
 #   project         = each.value.id
 # }
 
+# Google Cloud DNS Module (osinfra.io)
+# https://github.com/osinfra-io/terraform-google-cloud-dns
+
+module "dns" {
+  source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.0"
+
+  dns_name = "test.gcp.osinfra.io."
+
+  labels = {
+    env         = var.environment
+    cost-center = "x001"
+    repository  = "google-cloud-kitchen-terraform"
+    platform    = "google-cloud-landing-zone"
+    team        = "platform-google-cloud-landing-zone"
+  }
+
+  name       = "test-gcp-osinfra-io"
+  project    = module.vpc_host_project.project_id
+  visibility = "public"
+}
+
 # Google Project Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-project
 
@@ -174,6 +195,76 @@ module "vpc" {
   name       = "kitchen-vpc"
   project    = module.vpc_host_project.project_id
   shared_vpc = true
+}
+
+# Google Artifact Registry Repository
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository
+
+resource "google_artifact_registry_repository" "docker_standard" {
+  description   = "Registry for multi-region - US Standard : test"
+  format        = "DOCKER"
+  location      = "us"
+  project       = module.vpc_host_project.project_id
+  repository_id = "test-standard"
+}
+
+resource "google_artifact_registry_repository" "docker_remote" {
+  description = "Registry for multi-region - US Docker Hub"
+  format      = "DOCKER"
+  location    = "us"
+  mode        = "REMOTE_REPOSITORY"
+  project     = module.vpc_host_project.project_id
+
+  remote_repository_config {
+    description = "docker hub"
+    docker_repository {
+      public_repository = "DOCKER_HUB"
+    }
+  }
+
+  repository_id = "docker-remote"
+}
+
+resource "google_artifact_registry_repository" "docker_virtual" {
+  description   = "Registry for multi-region - US Virtual : test"
+  format        = "DOCKER"
+  location      = "us"
+  mode          = "VIRTUAL_REPOSITORY"
+  project       = module.vpc_host_project.project_id
+  repository_id = "test-virtual"
+
+  virtual_repository_config {
+    upstream_policies {
+      id         = "test"
+      priority   = 20
+      repository = google_artifact_registry_repository.docker_standard.id
+    }
+
+    upstream_policies {
+      id         = "docker"
+      priority   = 10
+      repository = google_artifact_registry_repository.docker_remote.id
+    }
+  }
+}
+
+# Google Artifact Registry IAM Binding
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository_iam
+
+resource "google_artifact_registry_repository_iam_binding" "docker_virtual_readers" {
+  location   = "us"
+  project    = module.vpc_host_project.project_id
+  repository = google_artifact_registry_repository.docker_virtual.id
+  role       = "roles/artifactregistry.reader"
+  members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
+}
+
+resource "google_artifact_registry_repository_iam_binding" "docker_standard_writers" {
+  location   = "us"
+  project    = module.vpc_host_project.project_id
+  repository = google_artifact_registry_repository.docker_standard.id
+  role       = "roles/artifactregistry.writer"
+  members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
 }
 
 # Compute Global Address Resource
