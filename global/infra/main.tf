@@ -201,8 +201,16 @@ module "vpc" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository
 
 resource "google_artifact_registry_repository" "docker_standard" {
-  description   = "Registry for multi-region - US Standard : test"
-  format        = "DOCKER"
+  description = "Registry for multi-region - US Standard : test"
+  format      = "DOCKER"
+
+  labels = {
+    env        = var.environment,
+    platform   = "google-cloud-landing-zone",
+    repository = "google-cloud-kitchen-terraform",
+    team       = "platform-google-cloud-landing-zone"
+  }
+
   location      = "us"
   project       = module.vpc_host_project.project_id
   repository_id = "test-standard"
@@ -211,9 +219,17 @@ resource "google_artifact_registry_repository" "docker_standard" {
 resource "google_artifact_registry_repository" "docker_remote" {
   description = "Registry for multi-region - US Docker Hub"
   format      = "DOCKER"
-  location    = "us"
-  mode        = "REMOTE_REPOSITORY"
-  project     = module.vpc_host_project.project_id
+
+  labels = {
+    env        = var.environment,
+    platform   = "google-cloud-landing-zone",
+    repository = "google-cloud-kitchen-terraform",
+    team       = "platform-google-cloud-landing-zone"
+  }
+
+  location = "us"
+  mode     = "REMOTE_REPOSITORY"
+  project  = module.vpc_host_project.project_id
 
   remote_repository_config {
     description = "docker hub"
@@ -226,9 +242,17 @@ resource "google_artifact_registry_repository" "docker_remote" {
 }
 
 resource "google_artifact_registry_repository" "docker_virtual" {
-  description   = "Registry for multi-region - US Virtual : test"
-  format        = "DOCKER"
-  location      = "us"
+  description = "Registry for multi-region - US Virtual : test"
+  format      = "DOCKER"
+  location    = "us"
+
+  labels = {
+    env        = var.environment,
+    platform   = "google-cloud-landing-zone",
+    repository = "google-cloud-kitchen-terraform",
+    team       = "platform-google-cloud-landing-zone"
+  }
+
   mode          = "VIRTUAL_REPOSITORY"
   project       = module.vpc_host_project.project_id
   repository_id = "test-virtual"
