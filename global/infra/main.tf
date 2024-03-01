@@ -206,7 +206,7 @@ resource "google_artifact_registry_repository" "docker_standard" {
 
   labels = {
     env         = var.environment,
-    cost_center = "x001"
+    cost-center = "x001"
     platform    = "google-cloud-landing-zone",
     repository  = "google-cloud-kitchen-terraform",
     team        = "platform-google-cloud-landing-zone"
@@ -223,7 +223,7 @@ resource "google_artifact_registry_repository" "docker_remote" {
 
   labels = {
     env         = var.environment,
-    cost_center = "x001"
+    cost-center = "x001"
     platform    = "google-cloud-landing-zone",
     repository  = "google-cloud-kitchen-terraform",
     team        = "platform-google-cloud-landing-zone"
@@ -250,7 +250,7 @@ resource "google_artifact_registry_repository" "docker_virtual" {
 
   labels = {
     env         = var.environment,
-    cost_center = "x001"
+    cost-center = "x001"
     platform    = "google-cloud-landing-zone",
     repository  = "google-cloud-kitchen-terraform",
     team        = "platform-google-cloud-landing-zone"
