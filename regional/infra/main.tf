@@ -112,7 +112,7 @@ resource "google_artifact_registry_repository_iam_binding" "docker_virtual_reade
   location   = "us"
   project    = local.global.vpc_host_project_id
   repository = google_artifact_registry_repository.docker_virtual[0].id
-  role       = "roles/artifactregistry.reader"
+  role       = "roles/artifactregistry.admin"
   members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
 }
 
@@ -122,7 +122,7 @@ resource "google_artifact_registry_repository_iam_binding" "docker_standard_writ
   location   = "us"
   project    = local.global.vpc_host_project_id
   repository = google_artifact_registry_repository.docker_standard[0].id
-  role       = "roles/artifactregistry.writer"
+  role       = "roles/artifactregistry.admin"
   members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
 }
 
