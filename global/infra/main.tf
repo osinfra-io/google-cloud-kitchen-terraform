@@ -207,11 +207,11 @@ resource "google_project_iam_member" "container_engine_service_agent_user" {
   role    = "roles/container.hostServiceAgentUser"
 }
 
-# resource "google_project_iam_member" "registry_admin" {
-#   member  = "serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"
-#   project = module.vpc_host_project.project_id
-#   role    = "roles/artifactregistry.admin"
-# }
+resource "google_project_iam_member" "dns_records_admins" {
+  member  = "serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"
+  project = module.vpc_host_project.project_id
+  role    = "organizations/163313809793/roles/dns.recordsAdmin"
+}
 
 # Service Networking Connection Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection
