@@ -210,7 +210,7 @@ resource "google_project_iam_member" "container_engine_service_agent_user" {
 resource "google_project_iam_member" "this" {
   for_each = toset(
     [
-      "organization:163133809793/roles/dns.recordsAdmin",
+      "organizations/163313809793/roles/dns.recordsAdmin",
       "roles/artifactregistry.admin"
     ]
   )
