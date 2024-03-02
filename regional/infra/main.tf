@@ -43,6 +43,78 @@ module "subnet" {
   region                   = var.region
   secondary_ip_ranges      = each.value.secondary_ip_ranges
 }
+# Google Artifact Registry Repository
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository
+
+resource "google_artifact_registry_repository" "docker_standard" {
+  description   = "Registry for multi-region - US Standard : test"
+  format        = "DOCKER"
+  labels        = local.labels
+  location      = "us"
+  project       = local.global.vpc_host_project_id
+  repository_id = "test-standard"
+}
+
+resource "google_artifact_registry_repository" "docker_remote" {
+  description = "Registry for multi-region - US Docker Hub"
+  format      = "DOCKER"
+  labels      = local.labels
+  location    = "us"
+  mode        = "REMOTE_REPOSITORY"
+  project     = local.global.vpc_host_project_id
+
+  remote_repository_config {
+    description = "docker hub"
+    docker_repository {
+      public_repository = "DOCKER_HUB"
+    }
+  }
+
+  repository_id = "docker-remote"
+}
+
+resource "google_artifact_registry_repository" "docker_virtual" {
+  description   = "Registry for multi-region - US Virtual : test"
+  format        = "DOCKER"
+  location      = "us"
+  labels        = local.labels
+  mode          = "VIRTUAL_REPOSITORY"
+  project       = local.global.vpc_host_project_id
+  repository_id = "test-virtual"
+
+  virtual_repository_config {
+    upstream_policies {
+      id         = "test"
+      priority   = 20
+      repository = google_artifact_registry_repository.docker_standard.id
+    }
+
+    upstream_policies {
+      id         = "docker"
+      priority   = 10
+      repository = google_artifact_registry_repository.docker_remote.id
+    }
+  }
+}
+
+# Google Artifact Registry IAM Binding
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository_iam
+
+resource "google_artifact_registry_repository_iam_binding" "docker_virtual_readers" {
+  location   = "us"
+  project    = local.global.vpc_host_project_id
+  repository = google_artifact_registry_repository.docker_virtual.id
+  role       = "roles/artifactregistry.reader"
+  members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
+}
+
+resource "google_artifact_registry_repository_iam_binding" "docker_standard_writers" {
+  location   = "us"
+  project    = local.global.vpc_host_project_id
+  repository = google_artifact_registry_repository.docker_standard.id
+  role       = "roles/artifactregistry.writer"
+  members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
+}
 
 # Compute Subnetwork IAM Member Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
