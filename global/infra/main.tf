@@ -46,6 +46,19 @@ provider "datadog" {
 #   project         = each.value.id
 # }
 
+# Google Cloud DNS Module (osinfra.io)
+# https://github.com/osinfra-io/terraform-google-cloud-dns
+
+module "dns" {
+  source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.0"
+
+  dns_name   = "test.gcp.osinfra.io."
+  labels     = local.labels
+  name       = "test-gcp-osinfra-io"
+  project    = module.vpc_host_project.project_id
+  visibility = "public"
+}
+
 # Google Project Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-project
 
@@ -58,16 +71,8 @@ module "vpc_host_project" {
   description                     = "vpc-host"
   environment                     = var.environment
   folder_id                       = var.folder_id
-
-  labels = {
-    env         = var.environment,
-    description = "vpc-host",
-    platform    = "google-cloud-landing-zone",
-    repository  = "google-cloud-kitchen-terraform",
-    team        = "platform-google-cloud-landing-zone"
-  }
-
-  prefix = "test"
+  labels                          = local.labels
+  prefix                          = "test"
 
   services = [
     "billingbudgets.googleapis.com",
@@ -94,16 +99,8 @@ module "gke_fleet_host_project" {
   description                     = "gke-fleet-host"
   environment                     = var.environment
   folder_id                       = var.folder_id
-
-  labels = {
-    env         = var.environment,
-    description = "gke-fleet-host",
-    platform    = "google-cloud-landing-zone",
-    repository  = "google-cloud-kitchen-terraform",
-    team        = "platform-google-cloud-landing-zone"
-  }
-
-  prefix = "test"
+  labels                          = local.labels
+  prefix                          = "test"
 
   services = [
     "billingbudgets.googleapis.com",
@@ -135,16 +132,8 @@ module "gke_fleet_member_project" {
   description                     = "gke-fleet-member"
   environment                     = var.environment
   folder_id                       = var.folder_id
-
-  labels = {
-    env         = var.environment,
-    description = "gke-fleet-member",
-    platform    = "google-cloud-landing-zone",
-    repository  = "google-cloud-kitchen-terraform",
-    team        = "platform-google-cloud-landing-zone"
-  }
-
-  prefix = "test"
+  labels                          = local.labels
+  prefix                          = "test"
 
   services = [
     "billingbudgets.googleapis.com",

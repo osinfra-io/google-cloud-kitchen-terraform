@@ -1,4 +1,11 @@
 locals {
+  labels = {
+    env         = var.environment,
+    cost-center = "x001"
+    platform    = "google-cloud-landing-zone",
+    repository  = "google-cloud-kitchen-terraform",
+    team        = "platform-google-cloud-landing-zone"
+  }
 
   projects = {
     "gke_fleet_host_project" : {
