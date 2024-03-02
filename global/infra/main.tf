@@ -207,10 +207,17 @@ resource "google_project_iam_member" "container_engine_service_agent_user" {
   role    = "roles/container.hostServiceAgentUser"
 }
 
-resource "google_project_iam_member" "dns_records_admins" {
+resource "google_project_iam_member" "this" {
+  for_each = toset(
+    [
+      "organization:163133809793/roles/dns.recordsAdmin",
+      "roles/artifactregistry.admin"
+    ]
+  )
+
   member  = "serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"
   project = module.vpc_host_project.project_id
-  role    = "organizations/163313809793/roles/dns.recordsAdmin"
+  role    = each.key
 }
 
 # Service Networking Connection Resource
