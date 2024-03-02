@@ -47,6 +47,8 @@ module "subnet" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository
 
 resource "google_artifact_registry_repository" "docker_standard" {
+  count = var.region == "us-east1" ? 1 : 0
+
   description   = "Registry for multi-region - US Standard : test"
   format        = "DOCKER"
   labels        = local.labels
@@ -56,6 +58,8 @@ resource "google_artifact_registry_repository" "docker_standard" {
 }
 
 resource "google_artifact_registry_repository" "docker_remote" {
+  count = var.region == "us-east1" ? 1 : 0
+
   description = "Registry for multi-region - US Docker Hub"
   format      = "DOCKER"
   labels      = local.labels
@@ -74,6 +78,8 @@ resource "google_artifact_registry_repository" "docker_remote" {
 }
 
 resource "google_artifact_registry_repository" "docker_virtual" {
+  count = var.region == "us-east1" ? 1 : 0
+
   description   = "Registry for multi-region - US Virtual : test"
   format        = "DOCKER"
   location      = "us"
@@ -86,13 +92,13 @@ resource "google_artifact_registry_repository" "docker_virtual" {
     upstream_policies {
       id         = "test"
       priority   = 20
-      repository = google_artifact_registry_repository.docker_standard.id
+      repository = google_artifact_registry_repository.docker_standard[0].id
     }
 
     upstream_policies {
       id         = "docker"
       priority   = 10
-      repository = google_artifact_registry_repository.docker_remote.id
+      repository = google_artifact_registry_repository.docker_remote[0].id
     }
   }
 }
@@ -101,17 +107,21 @@ resource "google_artifact_registry_repository" "docker_virtual" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository_iam
 
 resource "google_artifact_registry_repository_iam_binding" "docker_virtual_readers" {
+  count = var.region == "us-east1" ? 1 : 0
+
   location   = "us"
   project    = local.global.vpc_host_project_id
-  repository = google_artifact_registry_repository.docker_virtual.id
+  repository = google_artifact_registry_repository.docker_virtual[0].id
   role       = "roles/artifactregistry.reader"
   members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
 }
 
 resource "google_artifact_registry_repository_iam_binding" "docker_standard_writers" {
+  count = var.region == "us-east1" ? 1 : 0
+
   location   = "us"
   project    = local.global.vpc_host_project_id
-  repository = google_artifact_registry_repository.docker_standard.id
+  repository = google_artifact_registry_repository.docker_standard[0].id
   role       = "roles/artifactregistry.writer"
   members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
 }
