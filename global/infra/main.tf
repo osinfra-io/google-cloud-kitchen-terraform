@@ -207,19 +207,6 @@ resource "google_project_iam_member" "container_engine_service_agent_user" {
   role    = "roles/container.hostServiceAgentUser"
 }
 
-# resource "google_project_iam_member" "this" {
-#   for_each = toset(
-#     [
-#       "organizations/163313809793/roles/dns.recordsAdmin",
-#       #"roles/artifactregistry.admin"
-#     ]
-#   )
-
-#   member  = "serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"
-#   project = module.vpc_host_project.project_id
-#   role    = each.key
-# }
-
 # Service Networking Connection Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection
 
