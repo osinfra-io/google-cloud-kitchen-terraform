@@ -211,7 +211,7 @@ resource "google_project_iam_member" "this" {
   for_each = toset(
     [
       "organizations/163313809793/roles/dns.recordsAdmin",
-      "roles/artifactregistry.admin"
+      #"roles/artifactregistry.admin"
     ]
   )
 
