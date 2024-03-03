@@ -103,29 +103,6 @@ resource "google_artifact_registry_repository" "docker_virtual" {
   }
 }
 
-# Google Artifact Registry IAM Binding
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository_iam
-
-resource "google_artifact_registry_repository_iam_binding" "docker_virtual_readers" {
-  count = var.region == "us-east1" ? 1 : 0
-
-  location   = "us"
-  project    = local.global.vpc_host_project_id
-  repository = google_artifact_registry_repository.docker_virtual[0].id
-  role       = "roles/artifactregistry.reader"
-  members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
-}
-
-resource "google_artifact_registry_repository_iam_binding" "docker_standard_writers" {
-  count = var.region == "us-east1" ? 1 : 0
-
-  location   = "us"
-  project    = local.global.vpc_host_project_id
-  repository = google_artifact_registry_repository.docker_standard[0].id
-  role       = "roles/artifactregistry.writer"
-  members    = ["serviceAccount:plt-lz-testing-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"]
-}
-
 # Compute Subnetwork IAM Member Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
 
