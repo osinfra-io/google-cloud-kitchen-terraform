@@ -36,23 +36,31 @@ provider "datadog" {
 # Datadog Google Cloud Platform Integration Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-datadog-google-integration
 
-# module "datadog" {
-#   source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.4"
+module "datadog" {
+  for_each = toset(
+    [
+      module.default_project,
+      module.gke_fleet_host_project,
+      module.gke_fleet_member_project
+    ]
+  )
 
-#   api_key         = var.datadog_api_key
-#   cost_center     = "x001"
-#   is_cspm_enabled = true
+  source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.4"
+
+  api_key         = var.datadog_api_key
+  cost_center     = "x001"
+  is_cspm_enabled = true
 
 
-#   labels = {
-#     env        = var.environment
-#     repository = "google-cloud-kitchen-terraform"
-#     platform   = "google-cloud-landing-zone"
-#     team       = "platform-google-cloud-landing-zone"
-#   }
+  labels = {
+    env        = var.environment
+    repository = "google-cloud-kitchen-terraform"
+    platform   = "google-cloud-landing-zone"
+    team       = "platform-google-cloud-landing-zone"
+  }
 
-#   project = module.project.project_id
-# }
+  project = each.value.project_id
+}
 
 # Google Cloud DNS Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-cloud-dns
@@ -63,20 +71,20 @@ module "dns" {
   dns_name   = "test.gcp.osinfra.io."
   labels     = local.labels
   name       = "test-gcp-osinfra-io"
-  project    = module.vpc_host_project.project_id
+  project    = module.default_project.project_id
   visibility = "public"
 }
 
 # Google Project Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-project
 
-module "vpc_host_project" {
+module "default_project" {
   source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.9"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
   cost_center                     = "x001"
-  description                     = "vpc-host"
+  description                     = "default"
   environment                     = var.environment
   folder_id                       = var.folder_id
   labels                          = local.labels
@@ -169,7 +177,7 @@ module "vpc" {
   source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.1"
 
   name       = "kitchen-vpc"
-  project    = module.vpc_host_project.project_id
+  project    = module.default_project.project_id
   shared_vpc = true
 }
 
@@ -182,7 +190,7 @@ resource "google_compute_global_address" "service_network_peering_range" {
   name          = "service-network-peering-range"
   network       = module.vpc.self_link
   prefix_length = 16
-  project       = module.vpc_host_project.project_id
+  project       = module.default_project.project_id
   purpose       = "VPC_PEERING"
 }
 
@@ -203,7 +211,7 @@ resource "google_project_iam_member" "container_engine_firewall_management" {
   for_each = local.vpc_service_projects
 
   member  = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
-  project = module.vpc_host_project.project_id
+  project = module.default_project.project_id
   role    = "organizations/163313809793/roles/kubernetes.hostFirewallManagement"
 }
 
@@ -211,7 +219,7 @@ resource "google_project_iam_member" "container_engine_service_agent_user" {
   for_each = local.vpc_service_projects
 
   member  = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
-  project = module.vpc_host_project.project_id
+  project = module.default_project.project_id
   role    = "roles/container.hostServiceAgentUser"
 }
 
