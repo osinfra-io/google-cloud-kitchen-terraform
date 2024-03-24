@@ -39,9 +39,9 @@ provider "datadog" {
 module "datadog" {
   for_each = toset(
     [
-      module.default_project,
-      module.gke_fleet_host_project,
-      module.gke_fleet_member_project
+      module.default_project.project_id,
+      module.gke_fleet_host_project.project_id,
+      module.gke_fleet_member_project.project_id
     ]
   )
 
@@ -59,7 +59,7 @@ module "datadog" {
     team       = "platform-google-cloud-landing-zone"
   }
 
-  project = each.value.project_id
+  project = each.key
 }
 
 # Google Cloud DNS Module (osinfra.io)
