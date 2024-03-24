@@ -39,13 +39,29 @@ version: 0.1
       # south_america: 0 # Between Google Cloud regions within South America.
       # oceania: 0 # Indonesia and Oceania to/from any Google Cloud region.
       # worldwide: 0 # to a Google Cloud region on another continent.
-  # module.datadog["project_id-mock"].google_logging_project_sink.integration:
+  # module.datadog["default_project"].google_logging_project_sink.integration:
     # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.
-  # module.datadog["project_id-mock"].google_pubsub_subscription.integration:
+  # module.datadog["default_project"].google_pubsub_subscription.integration:
     # monthly_message_data_tb: 0.0 # Monthly amount of message data pulled by the subscription in TB.
     # storage_gb: 0.0 # Storage for retaining acknowledged messages in GB.
     # snapshot_storage_gb: 0.0 # Snapshot storage for unacknowledged messages in GB.
-  # module.datadog["project_id-mock"].google_pubsub_topic.integration:
+  # module.datadog["default_project"].google_pubsub_topic.integration:
+    # monthly_message_data_tb: 0.0 # Monthly amount of message data published to the topic in TB.
+  # module.datadog["gke_fleet_host_project"].google_logging_project_sink.integration:
+    # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.
+  # module.datadog["gke_fleet_host_project"].google_pubsub_subscription.integration:
+    # monthly_message_data_tb: 0.0 # Monthly amount of message data pulled by the subscription in TB.
+    # storage_gb: 0.0 # Storage for retaining acknowledged messages in GB.
+    # snapshot_storage_gb: 0.0 # Snapshot storage for unacknowledged messages in GB.
+  # module.datadog["gke_fleet_host_project"].google_pubsub_topic.integration:
+    # monthly_message_data_tb: 0.0 # Monthly amount of message data published to the topic in TB.
+  # module.datadog["gke_fleet_member_project"].google_logging_project_sink.integration:
+    # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.
+  # module.datadog["gke_fleet_member_project"].google_pubsub_subscription.integration:
+    # monthly_message_data_tb: 0.0 # Monthly amount of message data pulled by the subscription in TB.
+    # storage_gb: 0.0 # Storage for retaining acknowledged messages in GB.
+    # snapshot_storage_gb: 0.0 # Snapshot storage for unacknowledged messages in GB.
+  # module.datadog["gke_fleet_member_project"].google_pubsub_topic.integration:
     # monthly_message_data_tb: 0.0 # Monthly amount of message data published to the topic in TB.
   # module.default_project.google_logging_project_sink.cis_2_2_logging_sink:
     # monthly_logging_data_gb: 0.0 # Monthly logging data in GB.

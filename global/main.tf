@@ -37,13 +37,7 @@ provider "datadog" {
 # https://github.com/osinfra-io/terraform-datadog-google-integration
 
 module "datadog" {
-  for_each = toset(
-    [
-      module.default_project.project_id,
-      module.gke_fleet_host_project.project_id,
-      module.gke_fleet_member_project.project_id
-    ]
-  )
+  for_each = local.projects
 
   source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.4"
 
@@ -59,7 +53,7 @@ module "datadog" {
     team       = "platform-google-cloud-landing-zone"
   }
 
-  project = each.key
+  project = each.value.id
 }
 
 # Google Cloud DNS Module (osinfra.io)
