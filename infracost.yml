@@ -9,16 +9,6 @@
 
 version: 0.1
 projects:
-  - path: regional/test
-    name: "regional/test: us-east1-sandbox"
-    usage_file: regional/test/infracost/us-east1-sandbox.yml
-    terraform_var_files:
-      - tfvars/us-east1-sandbox.tfvars
-  - path: regional/test
-    name: "regional/test: us-east4-sandbox"
-    usage_file: regional/test/infracost/us-east4-sandbox.yml
-    terraform_var_files:
-      - tfvars/us-east4-sandbox.tfvars
   - path: global
     name: "global: sandbox"
     usage_file: global/infracost/sandbox.yml

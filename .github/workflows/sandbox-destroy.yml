@@ -71,5 +71,3 @@ jobs:
         -var=billing_account=${{ secrets.BILLING_ACCOUNT }}
         -var=datadog_api_key=${{ secrets.DATADOG_API_KEY }}
         -var=datadog_app_key=${{ secrets.DATADOG_APP_KEY }}
-
-
