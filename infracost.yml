@@ -9,18 +9,18 @@
 
 version: 0.1
 projects:
-  - path: global/infra
-    name: "global/infra: sandbox"
-    usage_file: global/infra/infracost/sandbox.yml
+  - path: global
+    name: "global: sandbox"
+    usage_file: global/infracost/sandbox.yml
     terraform_var_files:
       - tfvars/sandbox.tfvars
-  - path: regional/infra
-    name: "regional/infra: us-east1-sandbox"
-    usage_file: regional/infra/infracost/us-east1-sandbox.yml
+  - path: regional
+    name: "regional: us-east1-sandbox"
+    usage_file: regional/infracost/us-east1-sandbox.yml
     terraform_var_files:
       - tfvars/us-east1-sandbox.tfvars
-  - path: regional/infra
-    name: "regional/infra: us-east4-sandbox"
-    usage_file: regional/infra/infracost/us-east4-sandbox.yml
+  - path: regional
+    name: "regional: us-east4-sandbox"
+    usage_file: regional/infracost/us-east4-sandbox.yml
     terraform_var_files:
       - tfvars/us-east4-sandbox.tfvars
