@@ -34,10 +34,10 @@ No requirements.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production) | `string` | `"sb"` | no |
-| <a name="input_google_compute_subnetwork_iam_members"></a> [google\_compute\_subnetwork\_iam\_members](#input\_google\_compute\_subnetwork\_iam\_members) | A map of IAM members to add to the subnetwork | <pre>map(object({<br>    project_number = string<br>  }))</pre> | n/a | yes |
+| <a name="input_google_compute_subnetwork_iam_members"></a> [google\_compute\_subnetwork\_iam\_members](#input\_google\_compute\_subnetwork\_iam\_members) | A map of IAM members to add to the subnetwork | <pre>map(object({<br>    project_number = string<br>  }))</pre> | `{}` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region for this subnetwork | `string` | n/a | yes |
 | <a name="input_remote_bucket"></a> [remote\_bucket](#input\_remote\_bucket) | The remote bucket the `terraform_remote_state` data source retrieves the state from | `string` | n/a | yes |
-| <a name="input_subnets"></a> [subnets](#input\_subnets) | A map of subnets to create | <pre>map(object({<br>    ip_cidr_range = string<br>    secondary_ip_ranges = list(object({<br>      ip_cidr_range = string<br>      range_name    = string<br>    }))<br>  }))</pre> | n/a | yes |
+| <a name="input_subnets"></a> [subnets](#input\_subnets) | A map of subnets to create | <pre>map(object({<br>    ip_cidr_range = string<br>    secondary_ip_ranges = list(object({<br>      ip_cidr_range = string<br>      range_name    = string<br>    }))<br>  }))</pre> | `{}` | no |
 
 ## Outputs
 
