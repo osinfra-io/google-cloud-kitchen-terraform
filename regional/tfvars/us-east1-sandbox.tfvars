@@ -25,30 +25,16 @@ subnets = {
     ]
   }
 
-  "fleet-member-c" = {
+  "fleet-member" = {
     ip_cidr_range = "10.60.16.0/20"
     secondary_ip_ranges = [
       {
-        range_name    = "fleet-member-c-k8s-services-us-east1"
+        range_name    = "fleet-member-k8s-services-us-east1"
         ip_cidr_range = "10.61.0.0/20"
       },
       {
-        range_name    = "fleet-member-c-k8s-pods-us-east1"
+        range_name    = "fleet-member-k8s-pods-us-east1"
         ip_cidr_range = "10.4.0.0/14"
-      }
-    ]
-  }
-
-  "fleet-host-d" = {
-    ip_cidr_range = "10.60.32.0/20"
-    secondary_ip_ranges = [
-      {
-        range_name    = "fleet-member-d-k8s-services-us-east1"
-        ip_cidr_range = "10.61.16.0/20"
-      },
-      {
-        range_name    = "fleet-member-d-k8s-pods-us-east1"
-        ip_cidr_range = "10.8.0.0/14"
       }
     ]
   }
