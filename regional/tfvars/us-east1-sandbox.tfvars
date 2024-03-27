@@ -4,6 +4,9 @@ google_compute_subnetwork_iam_members = {
   "fleet-host-b" = {
     project_number = "1043568935529"
   }
+  "fleet-member" = {
+    project_number = "125396375999"
+  }
 }
 
 region        = "us-east1"
