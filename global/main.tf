@@ -36,25 +36,25 @@ provider "datadog" {
 # Datadog Google Cloud Platform Integration Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-datadog-google-integration
 
-# module "datadog" {
-#   for_each = local.projects
+module "datadog" {
+  for_each = local.datadog_projects
 
-#   source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.4"
+  source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.4"
 
-#   api_key         = var.datadog_api_key
-#   cost_center     = "x001"
-#   is_cspm_enabled = true
+  api_key         = var.datadog_api_key
+  cost_center     = "x001"
+  is_cspm_enabled = true
 
 
-#   labels = {
-#     env        = var.environment
-#     repository = "google-cloud-kitchen-terraform"
-#     platform   = "google-cloud-landing-zone"
-#     team       = "platform-google-cloud-landing-zone"
-#   }
+  labels = {
+    env        = var.environment
+    repository = "google-cloud-kitchen-terraform"
+    platform   = "google-cloud-landing-zone"
+    team       = "platform-google-cloud-landing-zone"
+  }
 
-#   project = each.value.id
-# }
+  project = each.key
+}
 
 # Google Cloud DNS Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-cloud-dns
