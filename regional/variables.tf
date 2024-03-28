@@ -9,6 +9,7 @@ variable "google_compute_subnetwork_iam_members" {
   type = map(object({
     project_number = string
   }))
+  default = {}
 }
 
 variable "region" {
@@ -30,4 +31,5 @@ variable "subnets" {
       range_name    = string
     }))
   }))
+  default = {}
 }
