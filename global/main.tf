@@ -53,7 +53,7 @@ module "datadog" {
     team       = "platform-google-cloud-landing-zone"
   }
 
-  project = each.key
+  project = each.value.id
 }
 
 # Google Cloud DNS Module (osinfra.io)
