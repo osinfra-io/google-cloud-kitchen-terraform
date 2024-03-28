@@ -4,14 +4,6 @@ terraform {
   # https://www.terraform.io/language/providers/requirements#requiring-providers
 
   required_providers {
-
-    # Datadog Provider
-    # https://registry.terraform.io/providers/DataDog/datadog/latest/docs
-
-    datadog = {
-      source = "datadog/datadog"
-    }
-
     # Google Cloud Platform Provider
     # https://registry.terraform.io/providers/hashicorp/google/latest/docs
 
@@ -26,11 +18,6 @@ terraform {
       source = "hashicorp/random"
     }
   }
-}
-
-provider "datadog" {
-  api_key = var.datadog_api_key
-  app_key = var.datadog_app_key
 }
 
 # Google Cloud DNS Module (osinfra.io)
