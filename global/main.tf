@@ -28,6 +28,11 @@ terraform {
   }
 }
 
+provider "datadog" {
+  api_key = var.datadog_api_key
+  app_key = var.datadog_app_key
+}
+
 # Google Cloud DNS Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-cloud-dns
 
