@@ -13,7 +13,7 @@ region        = "us-east1"
 remote_bucket = "plt-lz-testing-2c8b-sb"
 
 subnets = {
-  "fleet-host-b" = {
+  "fleet-host-us-east1-b" = {
     "ip_cidr_range" = "10.60.0.0/20"
 
     secondary_ip_ranges = [
@@ -28,7 +28,7 @@ subnets = {
     ]
   }
 
-  "fleet-member" = {
+  "fleet-member-us-east1" = {
     ip_cidr_range = "10.60.16.0/20"
     secondary_ip_ranges = [
       {
