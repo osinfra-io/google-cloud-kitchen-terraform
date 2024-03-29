@@ -36,7 +36,7 @@ module "subnet" {
   for_each = var.subnets
 
   ip_cidr_range            = each.value.ip_cidr_range
-  name                     = "${each.key}-${var.region}"
+  name                     = each.key
   network                  = "kitchen-vpc"
   private_ip_google_access = true
   project                  = local.global.default_project_id
