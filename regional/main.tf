@@ -36,10 +36,10 @@ module "subnet" {
   for_each = var.subnets
 
   ip_cidr_range            = each.value.ip_cidr_range
-  name                     = "${each.key}-${var.region}"
+  name                     = each.key
   network                  = "kitchen-vpc"
   private_ip_google_access = true
-  project                  = local.global.vpc_host_project_id
+  project                  = local.global.default_project_id
   region                   = var.region
   secondary_ip_ranges      = each.value.secondary_ip_ranges
 }
@@ -53,7 +53,7 @@ resource "google_artifact_registry_repository" "docker_standard" {
   format        = "DOCKER"
   labels        = local.labels
   location      = "us"
-  project       = local.global.vpc_host_project_id
+  project       = local.global.default_project_id
   repository_id = "test-standard"
 }
 
@@ -65,7 +65,7 @@ resource "google_artifact_registry_repository" "docker_remote" {
   labels      = local.labels
   location    = "us"
   mode        = "REMOTE_REPOSITORY"
-  project     = local.global.vpc_host_project_id
+  project     = local.global.default_project_id
 
   remote_repository_config {
     description = "docker hub"
@@ -85,7 +85,7 @@ resource "google_artifact_registry_repository" "docker_virtual" {
   location      = "us"
   labels        = local.labels
   mode          = "VIRTUAL_REPOSITORY"
-  project       = local.global.vpc_host_project_id
+  project       = local.global.default_project_id
   repository_id = "test-virtual"
 
   virtual_repository_config {
@@ -110,7 +110,7 @@ resource "google_compute_subnetwork_iam_member" "cloudservices" {
   for_each = var.google_compute_subnetwork_iam_members
 
   member     = "serviceAccount:${each.value.project_number}@cloudservices.gserviceaccount.com"
-  project    = local.global.vpc_host_project_id
+  project    = local.global.default_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
   subnetwork = module.subnet[each.key].name
@@ -120,7 +120,7 @@ resource "google_compute_subnetwork_iam_member" "container_engine" {
   for_each = var.google_compute_subnetwork_iam_members
 
   member     = "serviceAccount:service-${each.value.project_number}@container-engine-robot.iam.gserviceaccount.com"
-  project    = local.global.vpc_host_project_id
+  project    = local.global.default_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
   subnetwork = module.subnet[each.key].name

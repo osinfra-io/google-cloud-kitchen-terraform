@@ -11,9 +11,9 @@ output "gke_fleet_member_project_id" {
   value       = module.gke_fleet_member_project.project_id
 }
 
-output "vpc_host_project_id" {
-  description = "The ID of the VPC Host Project"
-  value       = module.vpc_host_project.project_id
+output "default_project_id" {
+  description = "The ID of the default Project"
+  value       = module.default_project.project_id
 }
 
 output "vpc_service_project_ids" {
