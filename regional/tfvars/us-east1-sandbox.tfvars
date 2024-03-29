@@ -18,11 +18,11 @@ subnets = {
 
     secondary_ip_ranges = [
       {
-        range_name    = "fleet-host-b-k8s-services-us-east1"
+        range_name    = "fleet-host-k8s-services-us-east1-b"
         ip_cidr_range = "10.60.240.0/20"
       },
       {
-        range_name    = "fleet-host-b-k8s-pods-us-east1"
+        range_name    = "fleet-host-k8s-pods-us-east1-b"
         ip_cidr_range = "10.0.0.0/14"
       }
     ]
