@@ -29,8 +29,3 @@ repos:
           - --hook-config=--path-to-file=README.md
           - --hook-config=--add-to-exiting-file=true
           - --hook-config=--create-file-if-not-exist=false
-
-      # - id: infracost_breakdown
-      #   args:
-      #     - --args=--config-file=infracost.yml
-      #     - --args=--sync-usage-file
