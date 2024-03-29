@@ -8,6 +8,8 @@
 
 [![infracost](https://img.shields.io/endpoint?url=https://dashboard.api.infracost.io/shields/json/cbeecfe3-576f-4553-984c-e451a575ee47/repos/f4bdf9b0-5bfb-415d-b1e6-a39a7be8404b/branch/56bee23d-a0d4-4c85-af1f-98cec8bfa7f6)](https://dashboard.infracost.io/org/osinfra-io/repos/f4bdf9b0-5bfb-415d-b1e6-a39a7be8404b?tab=settings)
 
+💵 Monthly estimates for this module based on Infracost baseline costs.
+
 ## Repository Description
 
 This repository creates a project for [Kitchen-Terraform](https://newcontext-oss.github.io/kitchen-terraform) to test [Terraform](https://www.terraform.io) child modules. It also creates any required infrastructure to run the tests. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
