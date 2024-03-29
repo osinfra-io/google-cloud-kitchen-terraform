@@ -1,10 +1,10 @@
 environment = "sandbox"
 
 google_compute_subnetwork_iam_members = {
-  "fleet-host-b" = {
+  "fleet-host-us-east1-b" = {
     project_number = "1043568935529"
   }
-  "fleet-member" = {
+  "fleet-member-us-east1" = {
     project_number = "125396375999"
   }
 }
