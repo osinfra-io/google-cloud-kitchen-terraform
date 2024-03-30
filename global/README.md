@@ -1,4 +1,4 @@
-# Terraform Global Infrastructure Documentation
+# Terraform Documentation
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -9,16 +9,16 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.21.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 5.22.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_default_project"></a> [default\_project](#module\_default\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.9 |
-| <a name="module_dns"></a> [dns](#module\_dns) | github.com/osinfra-io/terraform-google-cloud-dns//global | v0.1.0 |
-| <a name="module_gke_fleet_host_project"></a> [gke\_fleet\_host\_project](#module\_gke\_fleet\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.9 |
-| <a name="module_gke_fleet_member_project"></a> [gke\_fleet\_member\_project](#module\_gke\_fleet\_member\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.9 |
+| <a name="module_default_project"></a> [default\_project](#module\_default\_project) | github.com/osinfra-io/terraform-google-project//global | v0.2.0 |
+| <a name="module_dns"></a> [dns](#module\_dns) | github.com/osinfra-io/terraform-google-cloud-dns//global | v0.1.1 |
+| <a name="module_gke_fleet_host_project"></a> [gke\_fleet\_host\_project](#module\_gke\_fleet\_host\_project) | github.com/osinfra-io/terraform-google-project//global | v0.2.0 |
+| <a name="module_gke_fleet_member_project"></a> [gke\_fleet\_member\_project](#module\_gke\_fleet\_member\_project) | github.com/osinfra-io/terraform-google-project//global | v0.2.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
 
 ## Resources

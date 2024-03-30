@@ -10,7 +10,7 @@
 
 💵 Monthly estimates based on Infracost baseline costs.
 
-## Repository Description
+## 📄 Repository Description
 
 This repository creates a project for [Kitchen-Terraform](https://newcontext-oss.github.io/kitchen-terraform) to test [Terraform](https://www.terraform.io) child modules. It also creates any required infrastructure to run the tests. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
 
@@ -27,7 +27,7 @@ Our focus is on the core fundamental practice of platform engineering, Infrastru
 
 To avoid slowing down stream-aligned teams, we want to open up the possibility for contributions. The Open Source Infrastructure (as Code) model allows team members external to the platform team to contribute with only a slight increase in cognitive load. This section is for developers who want to contribute to this repository, describing the tools used, the skills, and the knowledge required, along with Terraform documentation.
 
-See the documentation for setting up a local development environment [here](https://docs.osinfra.io/fundamentals/development-setup).
+See the documentation for setting up a development environment [here](https://docs.osinfra.io/fundamentals/development-setup).
 
 ### 🛠️ Tools
 

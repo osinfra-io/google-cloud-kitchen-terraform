@@ -9,8 +9,8 @@ locals {
   }
 
   labels = {
-    env         = var.environment,
     cost-center = "x001"
+    env         = var.environment,
     platform    = "google-cloud-landing-zone",
     repository  = "google-cloud-kitchen-terraform",
     team        = "platform-google-cloud-landing-zone"
