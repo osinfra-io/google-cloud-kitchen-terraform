@@ -24,7 +24,7 @@ terraform {
 # https://github.com/osinfra-io/terraform-google-cloud-dns
 
 module "dns" {
-  source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.0"
+  source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.1"
 
   dns_name   = "test.gcp.osinfra.io."
   labels     = local.labels
@@ -37,11 +37,10 @@ module "dns" {
 # https://github.com/osinfra-io/terraform-google-project
 
 module "default_project" {
-  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.9"
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.2.0"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
-  cost_center                     = "x001"
   description                     = "default"
   environment                     = var.environment
   folder_id                       = var.folder_id
@@ -65,11 +64,10 @@ module "default_project" {
 }
 
 module "gke_fleet_host_project" {
-  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.9"
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.2.0"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
-  cost_center                     = "x001"
   description                     = "gke-fleet-host"
   environment                     = var.environment
   folder_id                       = var.folder_id
@@ -98,11 +96,10 @@ module "gke_fleet_host_project" {
 }
 
 module "gke_fleet_member_project" {
-  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.9"
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.2.0"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
-  cost_center                     = "x001"
   description                     = "gke-fleet-member"
   environment                     = var.environment
   folder_id                       = var.folder_id
