@@ -31,4 +31,5 @@ variable "subnets" {
     pod_ip_cidr_range      = string
     services_ip_cidr_range = string
   }))
+  default = {}
 }
