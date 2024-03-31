@@ -16,7 +16,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_subnet"></a> [subnet](#module\_subnet) | github.com/osinfra-io/terraform-google-subnet//regional | v0.1.1 |
+| <a name="module_subnets"></a> [subnets](#module\_subnets) | github.com/osinfra-io/terraform-google-subnet//regional | v0.1.1 |
 
 ## Resources
 
@@ -25,7 +25,7 @@ No requirements.
 | [google_artifact_registry_repository.docker_remote](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository) | resource |
 | [google_artifact_registry_repository.docker_standard](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository) | resource |
 | [google_artifact_registry_repository.docker_virtual](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository) | resource |
-| [google_compute_subnetwork_iam_member.cloudservices](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam_member) | resource |
+| [google_compute_subnetwork_iam_member.cloud_services](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam_member) | resource |
 | [google_compute_subnetwork_iam_member.container_engine](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam_member) | resource |
 | [terraform_remote_state.global](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
