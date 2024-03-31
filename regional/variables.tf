@@ -23,13 +23,12 @@ variable "remote_bucket" {
 }
 
 variable "subnets" {
-  description = "A map of subnets to create"
+  description = "The map of subnets to create"
   type = map(object({
-    ip_cidr_range = string
-    secondary_ip_ranges = list(object({
-      ip_cidr_range = string
-      range_name    = string
-    }))
+    ip_cidr_range          = string
+    service_project_number = string
+    master_ip_cidr_range   = string
+    pod_ip_cidr_range      = string
+    services_ip_cidr_range = string
   }))
-  default = {}
 }
