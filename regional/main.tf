@@ -31,8 +31,9 @@ data "terraform_remote_state" "global" {
 # Google Subnet Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-subnet
 
-module "subnet" {
-  source   = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.1"
+module "subnets" {
+  source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.1"
+
   for_each = var.subnets
 
   ip_cidr_range            = each.value.ip_cidr_range
@@ -41,8 +42,19 @@ module "subnet" {
   private_ip_google_access = true
   project                  = local.global.default_project_id
   region                   = var.region
-  secondary_ip_ranges      = each.value.secondary_ip_ranges
+
+  secondary_ip_ranges = [
+    {
+      range_name    = "k8s-secondary-services"
+      ip_cidr_range = each.value.services_ip_cidr_range
+    },
+    {
+      range_name    = "k8s-secondary-pods"
+      ip_cidr_range = each.value.pod_ip_cidr_range
+    }
+  ]
 }
+
 # Google Artifact Registry Repository
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository
 
@@ -106,22 +118,22 @@ resource "google_artifact_registry_repository" "docker_virtual" {
 # Compute Subnetwork IAM Member Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
 
-resource "google_compute_subnetwork_iam_member" "cloudservices" {
-  for_each = var.google_compute_subnetwork_iam_members
+resource "google_compute_subnetwork_iam_member" "cloud_services" {
+  for_each = var.subnets
 
-  member     = "serviceAccount:${each.value.project_number}@cloudservices.gserviceaccount.com"
+  member     = "serviceAccount:${each.value.service_project_number}@cloudservices.gserviceaccount.com"
   project    = local.global.default_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
-  subnetwork = module.subnet[each.key].name
+  subnetwork = module.subnets[each.key].name
 }
 
 resource "google_compute_subnetwork_iam_member" "container_engine" {
-  for_each = var.google_compute_subnetwork_iam_members
+  for_each = var.subnets
 
-  member     = "serviceAccount:service-${each.value.project_number}@container-engine-robot.iam.gserviceaccount.com"
+  member     = "serviceAccount:service-${each.value.service_project_number}@container-engine-robot.iam.gserviceaccount.com"
   project    = local.global.default_project_id
   region     = var.region
   role       = "roles/compute.networkUser"
-  subnetwork = module.subnet[each.key].name
+  subnetwork = module.subnets[each.key].name
 }
