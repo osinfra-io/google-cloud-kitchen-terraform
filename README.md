@@ -3,9 +3,7 @@
 **[GitHub Actions](<https://github.com/osinfra-io/google-cloud-terraform-testing>
 /actions):**
 
-[![Dependabot](https://github.com/osinfra-io/google-cloud-terraform-testing
-/actions/workflows/dependabot.yml/badge.svg)](<https://github.com/osinfra-io/google-cloud-terraform-testing>
-/actions/workflows/dependabot.yml)
+[![Dependabot](https://github.com/osinfra-io/google-cloud-terraform-testing/actions/workflows/dependabot.yml/badge.svg)](<https://github.com/osinfra-io/google-cloud-terraform-testing>/actions/workflows/dependabot.yml)
 
 **[Infracost](https://www.infracost.io):**
 
