@@ -22,7 +22,7 @@ data "terraform_remote_state" "global" {
 
   config = {
     bucket = var.remote_bucket
-    prefix = "google-cloud-kitchen-terraform"
+    prefix = "google-cloud-terraform-testing"
   }
 
   workspace = "global-${var.environment}"
@@ -38,7 +38,7 @@ module "subnets" {
 
   ip_cidr_range            = each.value.ip_cidr_range
   name                     = each.key
-  network                  = "kitchen-vpc"
+  network                  = "testing-vpc"
   private_ip_google_access = true
   project                  = local.global.default_project_id
   region                   = var.region

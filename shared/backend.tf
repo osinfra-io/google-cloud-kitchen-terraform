@@ -1,5 +1,5 @@
 terraform {
   backend "gcs" {
-    prefix = "google-cloud-kitchen-terraform"
+    prefix = "google-cloud-terraform-testing"
   }
 }
