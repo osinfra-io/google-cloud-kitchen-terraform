@@ -38,7 +38,7 @@ module "subnets" {
 
   ip_cidr_range            = each.value.ip_cidr_range
   name                     = each.key
-  network                  = "testing-vpc"
+  network                  = "terraform-test-vpc"
   private_ip_google_access = true
   project                  = local.global.default_project_id
   region                   = var.region
