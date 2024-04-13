@@ -12,7 +12,7 @@
 
 ## 📄 Repository Description
 
-This repository creates a project for [Terraform](https://www.terraform.io) testing for child modules. It also creates any required infrastructure to run the tests. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
+This repository creates a project for [Terraform testing](https://developer.hashicorp.com/terraform/language/tests) for child modules. It also creates any required infrastructure to run the tests. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
 
 ## 🏭 Platform Information
 
