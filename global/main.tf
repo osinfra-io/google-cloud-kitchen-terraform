@@ -131,7 +131,7 @@ module "gke_fleet_member_project" {
 module "vpc" {
   source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.1"
 
-  name       = "kitchen-vpc"
+  name       = "testing-vpc"
   project    = module.default_project.project_id
   shared_vpc = true
 }

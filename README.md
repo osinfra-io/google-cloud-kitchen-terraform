@@ -1,8 +1,8 @@
-# <img align="left" width="45" height="45" src="https://github.com/osinfra-io/google-cloud-kitchen-terraform/assets/1610100/7c683778-3256-45f1-b523-5fa35f3c59cc"> Google Cloud Platform - Kitchen-Terraform
+# <img align="left" width="45" height="45" src="https://github.com/osinfra-io/google-cloud-terraform-testing/assets/1610100/7c683778-3256-45f1-b523-5fa35f3c59cc"> Google Cloud Platform - Terraform Testing
 
-**[GitHub Actions](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions):**
+**[GitHub Actions](https://github.com/osinfra-io/google-cloud-terraform-testing/actions):**
 
-[![Dependabot](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-kitchen-terraform/actions/workflows/dependabot.yml)
+[![Dependabot](https://github.com/osinfra-io/google-cloud-terraform-testing/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-terraform-testing/actions/workflows/dependabot.yml)
 
 **[Infracost](https://www.infracost.io):**
 
@@ -12,12 +12,12 @@
 
 ## 📄 Repository Description
 
-This repository creates a project for [Kitchen-Terraform](https://newcontext-oss.github.io/kitchen-terraform) to test [Terraform](https://www.terraform.io) child modules. It also creates any required infrastructure to run the tests. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
+This repository creates a project for [Terraform testing](https://developer.hashicorp.com/terraform/language/tests) for child modules. It also creates any required infrastructure to run the tests. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
 
 ## 🏭 Platform Information
 
-- Documentation: [docs.osinfra.io](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone/google-cloud-kitchen-terraform)
-- Service Interfaces: [github.com](https://github.com/osinfra-io/google-cloud-kitchen-terraform/issues/new/choose)
+- Documentation: [docs.osinfra.io](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone/google-cloud-terraform-testing)
+- Service Interfaces: [github.com](https://github.com/osinfra-io/google-cloud-terraform-testing/issues/new/choose)
 
 ## <img align="left" width="35" height="35" src="https://github.com/osinfra-io/github-organization-management/assets/1610100/39d6ae3b-ccc2-42db-92f1-276a5bc54e65"> Development
 
@@ -40,9 +40,9 @@ See the documentation for setting up a development environment [here](https://do
 
 Links to documentation and other resources required to develop and iterate in this repository successfully.
 
-- [kitchen-terraform](https://newcontext-oss.github.io/kitchen-terraform)
+- [Terraform](https://www.terraform.io/docs/index.html)
 
 ### 📓 Terraform Documentation
 
-- [global](global/infra/README.md)
-- [regional](regional/infra/README.md)
+- [global](global/README.md)
+- [regional](regional/README.md)

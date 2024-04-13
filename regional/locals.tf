@@ -6,7 +6,7 @@ locals {
     cost-center = "x001"
     env         = var.environment,
     platform    = "google-cloud-landing-zone",
-    repository  = "google-cloud-kitchen-terraform",
+    repository  = "google-cloud-terraform-testing",
     team        = "platform-google-cloud-landing-zone"
   }
 
