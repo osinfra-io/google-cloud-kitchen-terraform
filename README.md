@@ -1,9 +1,9 @@
-# <img align="left" width="45" height="45" src="<https://github.com/osinfra-io/google-cloud-terraform-testing>/assets/1610100/7c683778-3256-45f1-b523-5fa35f3c59cc"> Google Cloud Platform - Terraform Testing
+# <img align="left" width="45" height="45" src="https://github.com/osinfra-io/google-cloud-terraform-testing/assets/1610100/7c683778-3256-45f1-b523-5fa35f3c59cc"> Google Cloud Platform - Terraform Testing
 
 **[GitHub Actions](<https://github.com/osinfra-io/google-cloud-terraform-testing>
 /actions):**
 
-[![Dependabot](https://github.com/osinfra-io/google-cloud-terraform-testing/actions/workflows/dependabot.yml/badge.svg)](<https://github.com/osinfra-io/google-cloud-terraform-testing>/actions/workflows/dependabot.yml)
+[![Dependabot](https://github.com/osinfra-io/google-cloud-terraform-testing/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-terraform-testing/actions/workflows/dependabot.yml)
 
 **[Infracost](https://www.infracost.io):**
 
