@@ -37,7 +37,7 @@ module "dns" {
 # https://github.com/osinfra-io/terraform-google-project
 
 module "default_project" {
-  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.2.0"
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.2.1"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
