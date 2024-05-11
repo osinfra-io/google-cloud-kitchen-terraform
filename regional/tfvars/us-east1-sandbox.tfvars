@@ -7,7 +7,7 @@ subnets = {
     ip_cidr_range          = "10.62.0.0/21"
     master_ip_cidr_range   = "10.63.240.48/28"
     pod_ip_cidr_range      = "10.0.0.0/15"
-    services_ip_cidr_range = "10.63.240.0/28"
+    services_ip_cidr_range = "10.62.248.0/21"
     service_project_number = "1043568935529"
   }
 
